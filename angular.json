@@ -1,9 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "0d229a66-e26c-4774-bce9-d1b3a51202ba"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "menu-kanban": {
+    "robles-abogados": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +16,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/menu-kanban",
+            "outputPath": "dist/robles-abogados",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,6 +27,9 @@
               "src/assets"
             ],
             "styles": [
+              {
+                "input": "src/main.scss"
+              },
               "src/styles.css"
             ],
             "scripts": []
@@ -61,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "menu-kanban:build"
+            "browserTarget": "robles-abogados:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "menu-kanban:build:production"
+              "browserTarget": "robles-abogados:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "menu-kanban:build"
+            "browserTarget": "robles-abogados:build"
           }
         },
         "test": {
@@ -109,16 +115,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "menu-kanban:serve"
+            "devServerTarget": "robles-abogados:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "menu-kanban:serve:production"
+              "devServerTarget": "robles-abogados:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "menu-kanban"
+  "defaultProject": "robles-abogados"
 }

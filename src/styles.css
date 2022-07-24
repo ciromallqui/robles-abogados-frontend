@@ -1,1 +1,180 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-layouts/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-kanban/styles/material.css';
+
+.e-kanban .e-kanban-header .e-header-cells .e-header-wrap .e-header-title{
+    overflow: visible !important;
+}
+
+.e-kanban .e-kanban-table .e-header-cells{
+    background: rgb(39, 154, 186);
+    color: #fff;
+}
+
+.e-kanban .e-kanban-table{
+    border-spacing: 3px;
+}
+
+.e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-empty-card,
+.e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-container .e-empty-card{
+    display: none !important;
+}
+
+.acciones{
+    border-top: solid 1px #1d83c2;
+    padding-top: 5px;
+    margin-top: 15px;
+    text-align: end;
+}
+
+.e-dlg-header-content {
+    background-color: #1d83c2;
+}
+.e-dialog.e-draggable .e-dlg-header-content{
+    height: 40px;
+    padding-top: 5px;
+}
+.e-dlg-header, .e-dlg-header *{
+    color: #FFF;
+    font-weight: bold !important;
+}
+
+.e-btn.e-outline.e-primary, .e-css.e-btn.e-outline.e-primary {
+    background-color: transparent;
+    border-color: rgb(39, 154, 186);
+    color: rgb(39, 154, 186);
+    border-radius: 7px;
+    padding: 8px;
+    margin: 5px;
+}
+
+.e-btn.e-outline.e-primary:hover, .e-css.e-btn.e-outline.e-primary:hover{
+    background-color: rgb(39, 154, 186);
+    color: #FFF;
+}
+
+.e-float-input.e-input-group:not(.e-float-icon-left) .e-float-line::before,.e-float-input.e-control-wrapper.e-input-group:not(.e-float-icon-left) .e-float-line::before,.e-float-input.e-input-group:not(.e-float-icon-left) .e-float-line::after,.e-float-input.e-control-wrapper.e-input-group:not(.e-float-icon-left) .e-float-line::after {
+  background-color: rgb(39, 154, 186);
+}
+
+.e-ddl.e-lib.e-input-group.e-control-wrapper.e-float-input.e-input-focus .e-float-text.e-label-top {
+  color: rgb(39, 154, 186);
+  font-weight: bold;
+}
+
+.e-float-input.e-control-wrapper:not(.e-error) input:focus ~ label.e-float-text,
+.e-float-input.e-control-wrapper:not(.e-error) input:valid ~ label.e-float-text,
+.e-float-input.e-control-wrapper:not(.e-error) input ~ label.e-label-top.e-float-text,
+.e-float-input.e-control-wrapper:not(.e-error) input[readonly] ~ label.e-label-top.e-float-text,
+.e-float-input.e-control-wrapper:not(.e-error) input[disabled] ~ label.e-label-top.e-float-text,
+.e-float-input .e-control-wrapper:not(.e-error) input label.e-float-text.e-label-top,
+.e-float-input.e-control-wrapper.e-bigger:not(.e-error) input:focus ~ label.e-float-text,
+.e-float-input.e-control-wrapper.e-bigger:not(.e-error) input:valid ~ label.e-float-text,
+.e-float-input.e-control-wrapper.e-bigger:not(.e-error) input ~ label.e-label-top.e-float-text,
+.e-float-input.e-control-wrapper.e-bigger:not(.e-error) input[readonly] ~ label.e-label-top.e-float-text,
+.e-float-input.e-control-wrapper.e-bigger:not(.e-error) input[disabled] ~ label.e-label-top.e-float-text,
+.e-bigger .e-float-input.e-control-wrapper:not(.e-error) input:focus ~ label.e-float-text,
+.e-bigger .e-float-input.e-control-wrapper:not(.e-error) input:valid ~ label.e-float-text,
+.e-bigger .e-float-input.e-control-wrapper:not(.e-error) input ~ label.e-label-top.e-float-text,
+.e-bigger .e-float-input.e-control-wrapper:not(.e-error) input[readonly] ~ label.e-label-top.e-float-text,
+.e-bigger .e-float-input.e-control-wrapper:not(.e-error) input[disabled] ~ label.e-label-top.e-float-text,
+.e-float-input.e-control-wrapper:not(.e-error).e-input-focus input ~ label.e-float-text,
+.e-float-input.e-control-wrapper.e-bigger:not(.e-error).e-input-focus input ~ label.e-float-text,
+.e-bigger .e-float-input.e-control-wrapper:not(.e-error).e-input-focus input ~ label.e-float-text {
+    color: rgb(39, 154, 186);
+    font-weight: bold;
+}
+
+.e-float-input.e-control-wrapper:not(.e-error) input:valid ~ label.e-float-text, .e-float-input.e-control-wrapper:not(.e-error) input ~ label.e-label-top.e-float-text {
+    color: rgb(39, 154, 186);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.e-grid.e-responsive .e-rowcell, .e-grid.e-responsive .e-headercelldiv{
+    font-weight: bold !important;
+    font-size: 15px;
+}
+
+.e-grid .e-altrow {
+    background-color: #d9d9bf;
+}
+
+.e-grid .e-rowcell{
+    padding: 1px !important;
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.cerrar-dialog{
+    color: rgb(216, 7, 7);
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.btn-numeric{
+    width: 95%;
+    z-index: 1000;
+    position: absolute;
+    margin-top: 6px;
+    text-align: center;
+}
+.btn-numeric span{
+    background: rgb(49, 194, 95); 
+    color: #FFF; 
+    font-weight: bold; 
+    font-size: 14px; 
+    padding: 2px 6px 2px 6px; 
+    border-radius: 5px; 
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+body{
+    font-family: 'Poppins', 'Arial Narrow', Arial, sans-serif;
+    font-size: 14px;
+}
+
+.swal2-html-container{
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.swal2-container.swal2-center>.swal2-popup {
+    width: 350px;
+}
+
+.e-grid.e-default .e-headercell, 
+.e-grid.e-default .e-detailheadercell{
+    background: rgb(160, 159, 159);
+    color: #000;
+}
+
+.e-menu-wrapper ul .e-menu-item.e-menu-caret-icon, .e-menu-container ul .e-menu-item.e-menu-caret-icon{
+    font-weight: bold;
+    font-size: 14px;
+}
+.e-menu-container.e-popup.e-menu-popup, .e-menu-wrapper.e-popup.e-menu-popup {
+    border: none;
+    box-shadow: 0 5px 5px -3px #0003, 0 8px 10px 1px #00000024, 0 3px 14px 2px #0000001f;
+    overflow: hidden;
+    position: absolute;
+    width: auto;
+}
+.e-menu-wrapper ul .e-menu-item .e-caret, .e-menu-container ul .e-menu-item .e-caret {
+    color: #FFF;
+    font-weight: bold;
+}
+.e-menu-wrapper ul .e-menu-item.e-selected, .e-menu-container ul .e-menu-item.e-selected {
+    color: rgba(0, 0, 0, 0.87);
+    outline: 0 solid #e0e0e0;
+    outline-offset: 0;
+    background-color: #e0e0e0;
+}

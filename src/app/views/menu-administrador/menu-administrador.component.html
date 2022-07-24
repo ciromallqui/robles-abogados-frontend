@@ -1,0 +1,20 @@
+<div class="menu-body">
+    <div class="header">
+        <div class="menu-right">
+            <ejs-menu [items]="AccountMenuItem" cssClass="dock-menu" (select)="onSelectMenu($event)"></ejs-menu>
+        </div>
+    </div>
+    <div class="menu-left">
+        <img src="assets/imagen/mini-logo.png" style="width: 70px; margin: 20px 0 20px 70px;">
+        <ejs-menu [items]='menuItems' orientation='Vertical' (select)='select($event)'></ejs-menu>
+    </div>
+    <div class="inicio" *ngIf="view=='I'">
+        <dashboard></dashboard>
+    </div>
+    <div class="gestion-persona" *ngIf="view=='GP'">
+        <persona-listado></persona-listado>
+    </div>
+    <div class="gestion-usuario" *ngIf="view=='GR'">
+        <usuario-listado></usuario-listado>
+    </div>
+</div>

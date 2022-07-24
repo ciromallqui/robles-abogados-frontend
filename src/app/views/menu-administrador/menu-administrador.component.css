@@ -1,0 +1,48 @@
+.menu-body{
+    position: relative;
+}
+
+.header{
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    background: rgb(34, 37, 52);
+}
+
+.menu-left{
+    position: absolute;
+    height: 100vh;
+    width: 220px;
+    background: rgb(34, 37, 52);
+}
+
+.e-menu-wrapper, .e-menu-container{
+    width: 100%;
+}
+.e-menu-wrapper ul.e-menu, .e-menu-container ul.e-menu{
+    background: rgb(34, 37, 52);
+    color: #FFF;
+    font-size: 14px;
+    /* font-weight: bold; */
+    width: 100%;
+}
+
+.e-menu-wrapper ul .e-menu-item.e-separator, 
+.e-menu-container ul .e-menu-item.e-separator{
+    border-bottom-color: rgb(137, 137, 137);
+}
+
+.gestion-persona, .inicio, .gestion-usuario{
+    position: absolute;
+    width: calc(100% - 220px);
+    height: calc(100vh - 60px);
+    margin-top: 60px;
+    margin-left: 220px;
+    padding: 15px;
+}
+
+.menu-right {
+    position : absolute;
+    top      : 8px;
+    right    : 5px;
+}

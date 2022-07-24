@@ -1,0 +1,30 @@
+<div style="margin-top: 10px;">
+    <div class="row">
+        <div class="col-lg-6">
+            <ejs-dropdownlist [dataSource]='listaTipoDocumento' placeholder="Tipo de Documento" [fields]='datosLista' floatLabelType='Auto' [(value)]="persona.codTipoDocumento"></ejs-dropdownlist>
+        </div>
+        <div class="col-lg-6">
+            <ejs-textbox placeholder="N° de Documento" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="persona.nroDocumento" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-6">
+            <ejs-textbox placeholder="Nombres" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="persona.nombre" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-6">
+            <ejs-textbox placeholder="Apellidos" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="persona.apellido" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-6">
+            <ejs-textbox placeholder="Correo" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="persona.correo" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-6">
+            <ejs-textbox placeholder="N° de Celular" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="persona.nroCelular" autocomplete="off"></ejs-textbox>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="acciones">
+                <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickAceptar()">ACEPTAR</button>
+                <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickCancelar()">CANCELAR</button>
+            </div>
+        </div>
+    </div>
+</div>

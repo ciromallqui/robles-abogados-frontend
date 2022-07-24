@@ -1,0 +1,51 @@
+<div *ngIf="view=='LOGIN'">
+    <div class="sesion">
+        <div class="image-body">
+            <img src="assets/imagen/board.png">
+            <div class="login">
+                <div class="row">
+                    <div class="col-12">
+                        <img src="assets/imagen/logo.png" style="width: 100px; margin-left: 85px;">
+                    </div>
+                </div>
+                <div class="row descripcion">
+                    <div><span>Robles Abogados Consultores</span></div>
+                </div><br>
+                <div class="row wrap">
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><span class="material-icons">
+                                account_circle
+                            </span></div>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Usuario" [(ngModel)]="sesionData.usuario">
+                    </div>
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><span class="material-icons">
+                                https
+                            </span></div>
+                        </div>
+                        <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="sesionData.clave">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-primary btn-block" style="width: 100%; margin-top: 10px;" (click)="onClickIniciarSesion()">Ingresar</button>
+                    </div>
+                </div>
+                <div class="row restablecer">
+                    <p class="m-0 small text-muted d-block">¿Olvidaste tu contraseña? <span
+                        class="text-primary xs-bs-cursor-pointer" style="text-decoration: underline;"
+                        (click)="onClickRestaurar()">Click aquí</span></p>
+                </div>
+            </div>
+            <div *ngIf="view=='REGISTRO'">
+                <span>COMO ETAS</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="view=='MENU'">
+    <menu-administrador></menu-administrador>
+</div>

@@ -1,0 +1,43 @@
+<div class="filtros">
+    <div class="row">
+        <!-- <div class="col-lg-4">
+            <ejs-textbox placeholder="Número Documento" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="filtro.nroDocumento" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-4">
+            <ejs-textbox placeholder="Nombres/Apellidos" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="filtro.nombre" autocomplete="off"></ejs-textbox>
+        </div> -->
+        <div class="col-lg-12" style="text-align: end; margin-bottom: 10px;">
+            <!-- <button type="button" class="btn btn-outline-primary btn-block" style="margin-top: 10px; font-weight: bold;" (click)="onClickBuscar()">BUSCAR</button> -->
+            <button type="button" class="btn btn-outline-primary btn-block" style="margin-top: 10px; font-weight: bold; margin-left: 20px;" (click)="onClickAgregar()">AGREGAR USUARIO</button>
+        </div>
+    </div>
+</div>
+<div class="listado">
+    <div class="row">
+        <div class="col-12">
+            <ejs-grid #grid [dataSource]='dataSource' [allowPaging]="true" [pageSettings]='pageSettings' [allowSorting]='true' [allowTextWrap]='true'>
+                <e-columns>
+                    <e-column [customAttributes]='customAttributes' [field]='column.nombre' [headerText]='column.titulo' [textAlign]='column.textAlign' width={{column.width}} *ngFor="let column of columnsToDisplay">
+                    <ng-template *ngIf="column.nombre=='acciones'" #template let-data>
+                        <ejs-tooltip #tooltip content='Editar usuario' cssClass='custom-tip-blue'>
+                            <span class="material-icons" (click)="onClickModificar(data)" style="cursor: pointer; color:#144AA7;">edit</span>
+                        </ejs-tooltip>
+                        <ejs-tooltip #tooltip content='Eliminar usuario' cssClass='custom-tip-red' *ngIf="data.idPersona!=1">
+                            <span class="material-icons" (click)="onClickEliminar(data)" style="cursor: pointer; color:#e00b55;">delete</span>
+                        </ejs-tooltip>
+                    </ng-template>
+                    </e-column>
+                </e-columns>
+            </ejs-grid>
+        </div>
+    </div>
+</div>
+
+<ejs-dialog #dialogDetalle allowDragging='true' [visible]="false" width='550px' isModal='true'>
+    <ng-template #header>
+        <span style="margin-left: 10px;">{{dataUsuario.titulo}} USUARIO</span>
+    </ng-template>
+    <ng-template #content>
+        <usuario-detalle [dataInput]="dataUsuario" (close)="cerrarDetalle($event)" *ngIf="showDetalle"></usuario-detalle>
+    </ng-template>
+</ejs-dialog>
