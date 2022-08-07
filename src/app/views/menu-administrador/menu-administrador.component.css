@@ -32,7 +32,8 @@
     border-bottom-color: rgb(137, 137, 137);
 }
 
-.gestion-persona, .inicio, .gestion-usuario{
+.gestion-persona, .inicio, 
+.gestion-usuario, .expediente{
     position: absolute;
     width: calc(100% - 220px);
     height: calc(100vh - 60px);

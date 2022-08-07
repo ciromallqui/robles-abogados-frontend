@@ -51,14 +51,15 @@ export class UsuarioListadoComponent implements OnInit {
   }
 
   onClickAgregar(){
-    this.dataUsuario.titulo = "AGREGAR";
+    this.dataUsuario.opcion = "AGREGAR";
+    this.dataUsuario.idUsuario = 0;
     this.showDetalle = true;
     this.dialogDetalle.show();
   }
 
   onClickModificar(data){
     this.dataUsuario = data;
-    this.dataUsuario.titulo = "MODIFICAR";
+    this.dataUsuario.opcion = "MODIFICAR";
     this.showDetalle = true;
     this.dialogDetalle.show();
   }

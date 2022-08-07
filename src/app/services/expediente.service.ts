@@ -5,7 +5,7 @@ import { HttpApiService } from '../common/http-api.service';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class ExpedienteService {
 
   host: any;
   constructor(public httpApiService: HttpApiService) { 
@@ -14,28 +14,21 @@ export class UsuarioService {
 
   inicializar(parametro): any {
     return this.httpApiService.post(
-      this.host, "/usuario/inicializar", 
+      this.host, "/expediente/inicializar", 
       parametro
     );
   }
 
   listar(parametro): any {
     return this.httpApiService.post(
-      this.host, "/usuario/listar", 
+      this.host, "/expediente/listar", 
       parametro
     );
   }
 
   agregar(parametro): any {
     return this.httpApiService.post(
-      this.host, "/usuario/agregar", 
-      parametro
-    );
-  }
-
-  modificar(parametro): any {
-    return this.httpApiService.post(
-      this.host, "/usuario/modificar", 
+      this.host, "/expediente/agregar", 
       parametro
     );
   }

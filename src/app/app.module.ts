@@ -19,6 +19,8 @@ import { PersonaDetalleComponent } from './views/persona/persona-detalle/persona
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { UsuarioListadoComponent } from './views/usuario/usuario-listado/usuario-listado.component';
 import { UsuarioDetalleComponent } from './views/usuario/usuario-detalle/usuario-detalle.component';
+import { ExpedienteListadoComponent } from './views/expediente/expediente-listado/expediente-listado.component';
+import { ExpedienteDetalleComponent } from './views/expediente/expediente-detalle/expediente-detalle.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { UsuarioDetalleComponent } from './views/usuario/usuario-detalle/usuario
     PersonaDetalleComponent,
     DashboardComponent,
     UsuarioListadoComponent,
-    UsuarioDetalleComponent
+    UsuarioDetalleComponent,
+    ExpedienteListadoComponent,
+    ExpedienteDetalleComponent
   ],
   imports: [
     BrowserModule,

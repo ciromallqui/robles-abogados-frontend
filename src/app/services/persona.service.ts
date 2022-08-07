@@ -18,6 +18,20 @@ export class PersonaService {
       parametro
     );
   }
+
+  consultar(parametro): any {
+    return this.httpApiService.post(
+      this.host, "/persona/consultar", 
+      parametro
+    );
+  }
+  
+  buscarPorDocumento(parametro): any {
+    return this.httpApiService.post(
+      this.host, "/persona/buscarPorDocumento", 
+      parametro
+    );
+  }
   
   listar(parametro): any {
     return this.httpApiService.post(

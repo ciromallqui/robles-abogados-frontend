@@ -1,0 +1,35 @@
+<div style="margin-top: 10px;">
+    <div class="row">
+        <div class="col-lg-6">
+            <ejs-textbox placeholder="N° de Documento" floatLabelType="Auto" type="text" [readonly]='expediente.idExpediente' [(value)]="expediente.nroDocumento" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-6" *ngIf="!expediente.idExpediente">
+            <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickBuscar()">BUSCAR PERSONA</button>
+        </div>
+        <div class="col-lg-6" *ngIf="expediente.idExpediente"></div>
+        <div class="col-lg-6">
+            <ejs-textbox placeholder="Nombres" floatLabelType="Auto" type="text" [readonly]='true' [(value)]="expediente.nombre" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-6">
+            <ejs-textbox placeholder="Apellidos" floatLabelType="Auto" type="text" [readonly]='true' [(value)]="expediente.apellido" autocomplete="off"></ejs-textbox>
+        </div>
+
+        <div class="col-lg-6">
+            <ejs-textbox placeholder="N° de Expediente" floatLabelType="Auto" type="text" [(value)]="expediente.nroExpediente" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-6">
+            <ejs-textbox placeholder="Título" floatLabelType="Auto" type="text" [(value)]="expediente.titulo" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-6">
+            <ejs-dropdownlist [dataSource]='listaArea' placeholder="Área" [fields]='datosLista' floatLabelType='Auto' [(value)]="expediente.idArea"></ejs-dropdownlist>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="acciones">
+                <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickAceptar()">ACEPTAR</button>
+                <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickCancelar()">CANCELAR</button>
+            </div>
+        </div>
+    </div>
+</div>

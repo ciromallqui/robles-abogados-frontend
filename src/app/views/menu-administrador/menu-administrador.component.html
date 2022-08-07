@@ -17,4 +17,7 @@
     <div class="gestion-usuario" *ngIf="view=='GR'">
         <usuario-listado></usuario-listado>
     </div>
+    <div class="expediente" *ngIf="view=='EXP'">
+        <expediente-listado [area]="areaInput"></expediente-listado>
+    </div>
 </div>

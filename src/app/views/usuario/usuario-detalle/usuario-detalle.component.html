@@ -1,25 +1,26 @@
 <div style="margin-top: 10px;">
     <div class="row">
         <div class="col-lg-6">
-            <ejs-textbox placeholder="N° de Documento" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="usuario.nroDocumento" autocomplete="off"></ejs-textbox>
+            <ejs-textbox placeholder="N° de Documento" floatLabelType="Auto" type="text" [readonly]='usuario.idUsuario' [(value)]="usuario.nroDocumento" (input)="onInsertDocumento($event)" autocomplete="off"></ejs-textbox>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="!usuario.idUsuario">
             <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickBuscar()">BUSCAR PERSONA</button>
         </div>
+        <div class="col-lg-6" *ngIf="usuario.idUsuario"></div>
         <div class="col-lg-6">
-            <ejs-textbox placeholder="Nombres" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="usuario.nombre" autocomplete="off"></ejs-textbox>
+            <ejs-textbox placeholder="Nombres" floatLabelType="Auto" type="text" [readonly]='true' [(value)]="usuario.nombre" autocomplete="off"></ejs-textbox>
         </div>
         <div class="col-lg-6">
-            <ejs-textbox placeholder="Apellidos" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="usuario.apellido" autocomplete="off"></ejs-textbox>
+            <ejs-textbox placeholder="Apellidos" floatLabelType="Auto" type="text" [readonly]='true' [(value)]="usuario.apellido" autocomplete="off"></ejs-textbox>
         </div>
         <div class="col-lg-6">
             <ejs-dropdownlist [dataSource]='listaPerfil' placeholder="Perfiles" [fields]='datosLista' floatLabelType='Auto' [(value)]="usuario.idPerfil"></ejs-dropdownlist>
         </div>
         <div class="col-lg-6">
-            <ejs-textbox placeholder="Usuario" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="usuario.codUsuario" autocomplete="off"></ejs-textbox>
+            <ejs-textbox placeholder="Usuario" floatLabelType="Auto" type="text" [readonly]='true' [(value)]="usuario.codUsuario" autocomplete="off"></ejs-textbox>
         </div>
-        <div class="col-lg-6">
-            <ejs-textbox placeholder="Contraseña" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="usuario.clave" autocomplete="off"></ejs-textbox>
+        <div class="col-lg-6" *ngIf="usuario.clave">
+            <ejs-textbox placeholder="Contraseña" floatLabelType="Auto" type="text" [readonly]='true' [(value)]="usuario.clave" autocomplete="off"></ejs-textbox>
         </div>
     </div>
     <div class="row">
