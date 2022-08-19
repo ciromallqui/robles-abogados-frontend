@@ -1,5 +1,5 @@
 <div style="margin-top: 10px;">
-    <div class="row">
+    <div class="row"> <!-- DATOS DEL CLIENTE -->
         <div class="col-lg-6">
             <ejs-textbox placeholder="N° de Documento" floatLabelType="Auto" type="text" [readonly]='expediente.idExpediente' [(value)]="expediente.nroDocumento" autocomplete="off"></ejs-textbox>
         </div>
@@ -13,17 +13,126 @@
         <div class="col-lg-6">
             <ejs-textbox placeholder="Apellidos" floatLabelType="Auto" type="text" [readonly]='true' [(value)]="expediente.apellido" autocomplete="off"></ejs-textbox>
         </div>
-
-        <div class="col-lg-6">
-            <ejs-textbox placeholder="N° de Expediente" floatLabelType="Auto" type="text" [(value)]="expediente.nroExpediente" autocomplete="off"></ejs-textbox>
+    </div>
+    <div class="row"> <!-- DATOS DEL EXPEDIENTE -->
+        <strong style="margin-top: 10px;">Código del Expediente</strong>
+        <div class="col-lg-4">
+            <ejs-textbox placeholder="Correlativo" floatLabelType="Auto" type="text" [(value)]="expediente.correlativo" autocomplete="off"></ejs-textbox>
         </div>
-        <div class="col-lg-6">
-            <ejs-textbox placeholder="Título" floatLabelType="Auto" type="text" [(value)]="expediente.titulo" autocomplete="off"></ejs-textbox>
+        <div class="col-lg-4">
+            <ejs-textbox placeholder="Año" floatLabelType="Auto" type="text" [(value)]="expediente.anio" autocomplete="off"></ejs-textbox>
         </div>
-        <div class="col-lg-6">
-            <ejs-dropdownlist [dataSource]='listaArea' placeholder="Área" [fields]='datosLista' floatLabelType='Auto' [(value)]="expediente.idArea"></ejs-dropdownlist>
+        <div class="col-lg-4">
+            <ejs-textbox placeholder="Extensión" floatLabelType="Auto" type="text" [(value)]="expediente.extension" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-4">
+            <ejs-textbox placeholder="Referencia del caso" floatLabelType="Auto" type="text" [(value)]="expediente.referencia" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-datepicker [allowEdit]=false format='dd/MM/yyyy' placeholder='Fecha de inicio' [(value)]="expediente.fechaInicio" floatLabelType="Auto" ></ejs-datepicker>
+         </div>
+        <div class="col-lg-4">
+            <ejs-textbox placeholder="Delito principal" floatLabelType="Auto" type="text" [(value)]="expediente.delitoPrincipal" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-4">
+            <ejs-dropdownlist [dataSource]='listaProcedencia' placeholder="Procedencia" [fields]='datosLista' floatLabelType='Auto' [(value)]="expediente.codProcedencia"></ejs-dropdownlist>
+        </div>
+        <div class="col-lg-4">
+            <ejs-dropdownlist [dataSource]='listaMotivo' placeholder="Motivo de ingreso" [fields]='datosLista' floatLabelType='Auto' [(value)]="expediente.codMotivo"></ejs-dropdownlist>
+        </div>
+        <div class="col-lg-4">
+            <ejs-textbox placeholder="Proceso" floatLabelType="Auto" type="text" [(value)]="expediente.proceso" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-4">
+            <ejs-textbox placeholder="Órgano jurisdiccional" floatLabelType="Auto" type="text" [(value)]="expediente.organoJurisdiccional" autocomplete="off"></ejs-textbox>
         </div>
     </div>
+    <div class="row">
+        <div style="display: inline-block; text-align: end; margin-top: 20px; margin-bottom: 20px;" class="col-12">
+            <span class="boton detalle" (click)="mostrarTab('D')" [ngClass]="{activeDetalle: seleccionado === 'D'}">DETALLE</span>
+            <span class="boton otros" (click)="mostrarTab('O')" [ngClass]="{activeOtros: seleccionado === 'O'}">OTROS</span>
+        </div>
+    </div>
+    <div class="row" *ngIf="seleccionado=='D'">
+        <div class="col-4">
+            <ejs-textbox placeholder="Sumilla" floatLabelType="Auto" type="text" [(value)]="expediente.sumilla" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Ubicación" floatLabelType="Auto" type="text" [(value)]="expediente.ubicacion" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Parte procesal en defenza" floatLabelType="Auto" type="text" [(value)]="expediente.parteProcesal" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Código" floatLabelType="Auto" type="text" [(value)]="expediente.codigo" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Expediente origen" floatLabelType="Auto" type="text" [(value)]="expediente.expedienteOrigen" autocomplete="off"></ejs-textbox>
+        </div>
+        <div style="display: inline-block; margin-top: 10px;">
+            <strong>Partes Procesales</strong><span class="agregar" (click)="onClickAgregarParteProcesal()">+</span>
+        </div>
+        <div class="row" *ngFor="let parteProcesal of expediente.partesProcesales">
+            <div class="col-lg-4">
+                <ejs-textbox placeholder="Nombres y apellidos" floatLabelType="Auto" type="text" [(value)]="parteProcesal.nombreCompleto" autocomplete="off"></ejs-textbox>
+            </div>
+            <div class="col-lg-4">
+                <ejs-textbox placeholder="DNI/RUC" floatLabelType="Auto" type="text" [(value)]="parteProcesal.nroDocumento" autocomplete="off"></ejs-textbox>
+            </div>
+            <div class="col-lg-3">
+                <ejs-dropdownlist [dataSource]='listaTipoParte' placeholder="Tipo de parte" [fields]='datosLista' floatLabelType='Auto' [(value)]="parteProcesal.codTipoParte"></ejs-dropdownlist>
+            </div>
+            <div class="col-lg-1" *ngIf="parteProcesal.nuevaLista">
+                <span class="material-icons" style="margin-top: 23px;color: #c73d3d;cursor: pointer;">delete_forever</span>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="seleccionado=='O'">
+        <div class="col-4">
+            <ejs-textbox placeholder="Juez/Ponente" floatLabelType="Auto" type="text" [(value)]="expediente.juezPonente" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Especialista legal" floatLabelType="Auto" type="text" [(value)]="expediente.especialistaLegal" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Abogado responsable" floatLabelType="Auto" type="text" [(value)]="expediente.abogadoResponsable" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Fiscalía" floatLabelType="Auto" type="text" [(value)]="expediente.fiscalia" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Fiscal" floatLabelType="Auto" type="text" [(value)]="expediente.fiscal" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Comisaría" floatLabelType="Auto" type="text" [(value)]="expediente.comisaria" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Nro. de carpeta" floatLabelType="Auto" type="text" [(value)]="expediente.nroCarpeta" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Nro. de Denuncia" floatLabelType="Auto" type="text" [(value)]="expediente.nroDenuncia" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Ubicación física" floatLabelType="Auto" type="text" [(value)]="expediente.ubicacionFisica" autocomplete="off"></ejs-textbox>
+        </div>
+        <strong style="margin-top: 10px;">Echos</strong>
+        <div class="col-4">
+            <ejs-dropdownlist [dataSource]='listaDepartamento' placeholder="Departamento" [fields]='datosLista' floatLabelType='Auto' [(value)]="expediente.codDepartamento"></ejs-dropdownlist>
+        </div>
+        <div class="col-4">
+            <ejs-dropdownlist [dataSource]='listaProvincia' placeholder="Provincia" [fields]='datosLista' floatLabelType='Auto' [(value)]="expediente.codProvincia"></ejs-dropdownlist>
+        </div>
+        <div class="col-4">
+            <ejs-dropdownlist [dataSource]='listaDistrito' placeholder="Distrito" [fields]='datosLista' floatLabelType='Auto' [(value)]="expediente.codDistrito"></ejs-dropdownlist>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Anexo/Caserío" floatLabelType="Auto" type="text" [(value)]="expediente.anexoCaserio" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-datepicker [allowEdit]=false format='dd/MM/yyyy' placeholder='Fecha' [(value)]="expediente.fecha" floatLabelType="Auto" ></ejs-datepicker>
+         </div>
+    </div>
+
     <div class="row">
         <div class="col-12">
             <div class="acciones">

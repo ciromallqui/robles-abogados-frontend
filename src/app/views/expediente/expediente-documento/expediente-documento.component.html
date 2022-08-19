@@ -1,0 +1,16 @@
+<div>
+    <div class="row">
+        <div class="col-12">
+            <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickAgragarDocumento()">AGREGAR DOCUMENTO</button>
+        </div>
+    </div>
+</div>
+
+<ejs-dialog #dialogDocumentoDetalle allowDragging='true' [visible]="false" width='700px' isModal='true'>
+    <ng-template #header>
+        <span style="margin-left: 10px;">AGREGAR NUEVO DOCUMENTO</span>
+    </ng-template>
+    <ng-template #content>
+        <expediente-documento-detalle [dataInput]="dataExpediente" (close)="cerrarDetalle($event)" *ngIf="showDetalle"></expediente-documento-detalle>
+    </ng-template>
+</ejs-dialog>

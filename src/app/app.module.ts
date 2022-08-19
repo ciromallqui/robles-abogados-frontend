@@ -21,6 +21,10 @@ import { UsuarioListadoComponent } from './views/usuario/usuario-listado/usuario
 import { UsuarioDetalleComponent } from './views/usuario/usuario-detalle/usuario-detalle.component';
 import { ExpedienteListadoComponent } from './views/expediente/expediente-listado/expediente-listado.component';
 import { ExpedienteDetalleComponent } from './views/expediente/expediente-detalle/expediente-detalle.component';
+import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { ExpedienteDocumentoComponent } from './views/expediente/expediente-documento/expediente-documento.component';
+import { ExpedienteMostrarComponent } from './views/expediente/expediente-mostrar/expediente-mostrar.component';
+import { ExpedienteDocumentoDetalleComponent } from './views/expediente/expediente-documento-detalle/expediente-documento-detalle.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,10 @@ import { ExpedienteDetalleComponent } from './views/expediente/expediente-detall
     UsuarioListadoComponent,
     UsuarioDetalleComponent,
     ExpedienteListadoComponent,
-    ExpedienteDetalleComponent
+    ExpedienteDetalleComponent,
+    ExpedienteDocumentoComponent,
+    ExpedienteMostrarComponent,
+    ExpedienteDocumentoDetalleComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,8 @@ import { ExpedienteDetalleComponent } from './views/expediente/expediente-detall
     HttpClientModule,
     MenuModule,
     FormsModule,
-    TooltipModule
+    TooltipModule,
+    DatePickerModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}

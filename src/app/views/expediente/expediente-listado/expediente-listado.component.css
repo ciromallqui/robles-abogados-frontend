@@ -1,0 +1,7 @@
+.nroExpediente{
+    cursor: pointer;
+}
+
+.nroExpediente:hover{
+    color: #144AA7;
+}

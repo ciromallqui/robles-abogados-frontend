@@ -13,7 +13,7 @@ export class MenuAdministradorComponent implements OnInit {
   public AccountMenuItem: MenuItemModel[] = [];
   public menuItems: MenuItemModel[] = [
     {text: 'INICIO', id: 'I'},{text: 'Gestión de Personas', id: 'GP'},{text: 'Gestión de Usuarios/Perfiles', id: 'GR'}, {separator: true},
-    {text: 'Expedientes', items: [{text: 'Secretaría', id: 'EXP'}, {text: 'Administrador', id: 'EXP'}]},{text: 'Documentos'}
+    {text: 'Expedientes', id: 'EXP'}
   ];
 
   view: string = "I";
@@ -51,9 +51,6 @@ export class MenuAdministradorComponent implements OnInit {
         this.view = "GR"; break;
       case "EXP":
         this.areaInput = "1";
-        this.view = "EXP"; break;
-      case "EXP":
-        this.areaInput = "2";
         this.view = "EXP"; break;
     }
   }

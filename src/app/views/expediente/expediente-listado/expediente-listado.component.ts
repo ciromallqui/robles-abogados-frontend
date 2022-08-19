@@ -36,9 +36,11 @@ export class ExpedienteListadoComponent implements OnInit {
     this.columnsToDisplay = [
       { nombre: "acciones", titulo: "", textAlign: 'Center', visible: true, tipo: "string", width: 100 },
       { nombre: "nroExpediente", titulo: "N° EXPEDIENTE", visible: true, tipo: "string", width: 150 },
-      { nombre: "titulo", titulo: "TÍTULO", visible: true, tipo: "string", width: '' },
-      { nombre: "nroDocumento", titulo: "N° DOC.", visible: true, tipo: "string", width: 150 },
-      { nombre: "nombreCompleto", titulo: "NOMBRE COMPLETO", visible: true, tipo: "string", width: '' }
+      { nombre: "nombreCompleto", titulo: "CLIENTE", visible: true, tipo: "string", width: '' },
+      { nombre: "fechaInicio", titulo: "FECHA INICIO", visible: true, tipo: "string", width: 120 },
+      { nombre: "delitoPrincipal", titulo: "MATERIA/DELITO", visible: true, tipo: "string", width: '' },
+      { nombre: "dias", titulo: "DÍAS", visible: true, tipo: "string", width: 150 },
+      { nombre: "area", titulo: "ÁREA", visible: true, tipo: "string", width: 150 }
     ];
   }
 
@@ -75,5 +77,12 @@ export class ExpedienteListadoComponent implements OnInit {
     this.showDetalle = false;
     this.dialogDetalle.hide();
     this.listar();
+  }
+
+  onClickMostrarExpediente(data){
+    this.dataExpediente = data;
+    this.dataExpediente.opcion = "VER";
+    this.showDetalle = true;
+    this.dialogDetalle.show();
   }
 }

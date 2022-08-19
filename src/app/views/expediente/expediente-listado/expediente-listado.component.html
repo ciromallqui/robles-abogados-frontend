@@ -26,6 +26,9 @@
                             <span class="material-icons" (click)="onClickEliminar(data)" style="cursor: pointer; color:#e00b55;">delete</span>
                         </ejs-tooltip>
                     </ng-template>
+                    <ng-template *ngIf="column.nombre=='nroExpediente'" #template let-data>
+                        <span class="nroExpediente" (click)="onClickMostrarExpediente(data)">{{data.nroExpediente}}</span>
+                    </ng-template>
                     </e-column>
                 </e-columns>
             </ejs-grid>
@@ -33,11 +36,13 @@
     </div>
 </div>
 
-<ejs-dialog #dialogDetalle allowDragging='true' [visible]="false" width='550px' isModal='true'>
+<ejs-dialog #dialogDetalle allowDragging='true' [visible]="false" width='900px' isModal='true'>
     <ng-template #header>
-        <span style="margin-left: 10px;">{{dataExpediente.opcion}} EXPEDIENTE</span>
+        <span style="margin-left: 10px;" *ngIf="dataExpediente.opcion!='VER'">{{dataExpediente.opcion}} EXPEDIENTE</span>
+        <span style="margin-left: 10px;" *ngIf="dataExpediente.opcion=='VER'">EXPEDIENTE / {{dataExpediente.nroExpediente}}</span>
     </ng-template>
     <ng-template #content>
-        <expediente-detalle [dataInput]="dataExpediente" (close)="cerrarDetalle($event)" *ngIf="showDetalle"></expediente-detalle>
+        <expediente-detalle [dataInput]="dataExpediente" (close)="cerrarDetalle($event)" *ngIf="showDetalle && dataExpediente.opcion!='VER'"></expediente-detalle>
+        <expediente-mostrar [dataInput]="dataExpediente" (close)="cerrarDetalle($event)" *ngIf="showDetalle && dataExpediente.opcion=='VER'"></expediente-mostrar>
     </ng-template>
 </ejs-dialog>

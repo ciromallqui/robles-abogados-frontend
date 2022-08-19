@@ -1,0 +1,87 @@
+<div>
+    <div class="row" style="margin-bottom: 10px;"> <!-- TAB -->
+        <div style="display: inline-block; margin-top: 20px; margin-bottom: 10px;" class="col-12">
+            <span class="boton detalle" (click)="mostrarTab('D')" [ngClass]="{activeDetalle: seleccionado === 'D'}">DETALLE</span>
+            <span class="boton actos" (click)="mostrarTab('A')" [ngClass]="{activeActos: seleccionado === 'A'}">DOCUMENTOS</span>
+        </div>
+    </div>
+    <div class="row" *ngIf="seleccionado=='D'"> <!-- DATOS DEL EXPEDIENTE -->
+        <div class="col-4">
+            <ejs-datepicker [allowEdit]=false format='dd/MM/yyyy' placeholder='Fecha de inicio' [(value)]="expediente.fechaInicio" floatLabelType="Auto" ></ejs-datepicker>
+         </div>
+         <div class="col-lg-4">
+            <ejs-textbox placeholder="Referencia del caso" floatLabelType="Auto" type="text" [(value)]="expediente.referencia" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-4">
+            <ejs-textbox placeholder="Delito principal" floatLabelType="Auto" type="text" [(value)]="expediente.delitoPrincipal" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-4">
+            <ejs-textbox placeholder="Procedencia" floatLabelType="Auto" type="text" [(value)]="expediente.procedencia" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-4">
+            <ejs-textbox placeholder="Motivo de ingreso" floatLabelType="Auto" type="text" [(value)]="expediente.motivo" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-lg-4">
+            <ejs-textbox placeholder="Proceso" floatLabelType="Auto" type="text" [(value)]="expediente.proceso" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Sumilla" floatLabelType="Auto" type="text" [(value)]="expediente.sumilla" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Ubicación" floatLabelType="Auto" type="text" [(value)]="expediente.ubicacion" autocomplete="off"></ejs-textbox>
+        </div>
+        <strong style="margin-top: 10px;">Información de la Instancia</strong>
+        <div class="col-lg-4">
+            <ejs-textbox placeholder="Órgano jurisdiccional" floatLabelType="Auto" type="text" [(value)]="expediente.organoJurisdiccional" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Juez/Ponente" floatLabelType="Auto" type="text" [(value)]="expediente.juezPonente" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Especialista legal" floatLabelType="Auto" type="text" [(value)]="expediente.especialistaLegal" autocomplete="off"></ejs-textbox>
+        </div>
+        <strong style="margin-top: 10px;">Información Interna</strong>
+        <div class="col-4">
+            <ejs-textbox placeholder="Abogado responsable" floatLabelType="Auto" type="text" [(value)]="expediente.abogadoResponsable" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Ubicación física" floatLabelType="Auto" type="text" [(value)]="expediente.ubicacionFisica" autocomplete="off"></ejs-textbox>
+        </div>
+        <strong style="margin-top: 10px;">Echos</strong>
+        <div class="col-4">
+            <ejs-textbox placeholder="Departamento" floatLabelType="Auto" type="text" [(value)]="expediente.departamento" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Provincia" floatLabelType="Auto" type="text" [(value)]="expediente.provincia" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Distrito" floatLabelType="Auto" type="text" [(value)]="expediente.distrito" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-textbox placeholder="Anexo/Caserío" floatLabelType="Auto" type="text" [(value)]="expediente.anexoCaserio" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-4">
+            <ejs-datepicker [allowEdit]=false format='dd/MM/yyyy' placeholder='Fecha' [(value)]="expediente.fecha" floatLabelType="Auto" ></ejs-datepicker>
+        </div>
+        <strong style="margin-top: 10px;">Partes Procesales</strong>
+        <div class="row">
+            <div class="col-12">
+                <ejs-grid #grid [dataSource]='expediente.partesProcesales' [allowPaging]="true" [pageSettings]='pageSettings' [allowSorting]='true' [allowTextWrap]='true'>
+                    <e-columns>
+                        <e-column [customAttributes]='customAttributes' [field]='column.nombre' [headerText]='column.titulo' [textAlign]='column.textAlign' width={{column.width}} *ngFor="let column of columnsToDisplay"></e-column>
+                    </e-columns>
+                </ejs-grid>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="seleccionado=='A'">
+        <expediente-documento [dataInput]="dataInput"></expediente-documento>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="acciones">
+                <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickCerrar()">CERRAR</button>
+            </div>
+        </div>
+    </div>
+</div>

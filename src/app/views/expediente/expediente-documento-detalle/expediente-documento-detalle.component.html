@@ -1,0 +1,24 @@
+<div style="margin-top: 10px;">
+    <div class="row">
+        <div class="col-6">
+            <ejs-textbox placeholder="Título" floatLabelType="Auto" type="text" [(value)]="documento.asunto" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-6">
+            <ejs-textbox placeholder="Descripción" floatLabelType="Auto" type="text" [(value)]="documento.descripcion" autocomplete="off"></ejs-textbox>
+        </div>
+        <div class="col-6">
+            <ejs-dropdownlist [dataSource]='listaTipoDocumento' placeholder="Tipo de documento" [fields]='datosLista' floatLabelType='Auto' [(value)]="documento.codTipo"></ejs-dropdownlist>
+        </div>
+        <div class="col-6">
+            <input type="file" (change)="onFileChanged($event)" style="margin-top: 25px;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="acciones">
+                <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickAceptar()">ACEPTAR</button>
+                <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickCancelar()">CANCELAR</button>
+            </div>
+        </div>
+    </div>
+</div>

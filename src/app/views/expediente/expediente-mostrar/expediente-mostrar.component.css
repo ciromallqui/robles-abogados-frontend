@@ -7,7 +7,7 @@
     font-weight: bold;
 }
 
-.activeDetalle, .activeOtros{
+.activeDetalle, .activeActos{
     color: #FFF;
     background: #144AA7;
     position: relative;
@@ -16,14 +16,4 @@
 
 .detalle{
     margin-right: -25px;
-}
-
-.agregar{
-    background: #144AA7;
-    padding: 0 4px 0 4px;
-    margin-left: 5px;
-    color: #FFF;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 2px;
 }
