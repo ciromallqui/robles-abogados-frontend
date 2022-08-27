@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DocumentoService } from 'src/app/services/documento.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'expediente-documento-detalle',
@@ -45,7 +46,16 @@ export class ExpedienteDocumentoDetalleComponent implements OnInit {
     this.documento.fechaCreacion = new Date(this.fullYear, this.month, this.date, 7, 0, 0);
     this.documento.idExpediente = this.dataInput.idExpediente;
     this.documentoService.agregar(this.documento).then(res =>{
-
+      if(res == null) {
+        swal.fire({position: 'top-end',icon: 'error',title: 'No se pudo agregar el documento.',showConfirmButton: false,toast: true,timer: 4000});
+        return;
+      }
+      if(res.status==1){
+        swal.fire({position: 'top-end',icon: 'success',title: 'El documento se agregó correctamente.',showConfirmButton: false,toast: true,timer: 4000});
+        this.close.emit(true);
+      }else{
+        swal.fire({position: 'top-end',icon: 'error',title: 'El documento no se agregó.',showConfirmButton: false,toast: true,timer: 4000});
+      }
     });
   }
   

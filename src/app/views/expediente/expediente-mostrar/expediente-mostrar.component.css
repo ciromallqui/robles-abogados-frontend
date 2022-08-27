@@ -17,3 +17,17 @@
 .detalle{
     margin-right: -25px;
 }
+
+.menu-right {
+    position : absolute;
+    top      : 8px;
+    right    : 5px;
+}
+
+.e-menu-wrapper ul .e-menu-item.e-menu-caret-icon, 
+.e-menu-container ul .e-menu-item.e-menu-caret-icon{
+    /* background: #144AA7; */
+    border: solid 2px #144AA7;
+    border-radius: 20px 0 0 20px;
+    color: #144AA7;
+}

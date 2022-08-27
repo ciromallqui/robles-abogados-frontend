@@ -4,6 +4,17 @@
             <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickAgragarDocumento()">AGREGAR DOCUMENTO</button>
         </div>
     </div>
+    <div class="row" *ngFor="let data of dataSource" style="border-top: solid 1px #c7c7c7; padding-bottom: 10px;">
+        <strong style="margin-top: 10px; font-size: 16px; color: #144AA7;">{{data.asunto}}</strong>
+        <span style="margin-top: 10px;">{{data.descripcion}}</span>
+        <div style="margin-top: 10px;">
+            <span><span style="font-weight: bold;">Creado por: </span> {{data.usuarioCrea}}</span>
+            <span style="margin-left: 20px;"><span style="font-weight: bold;">Fecha: </span> {{data.fechaCreacion}}</span>
+        </div>
+        <div style="display: inline-block; margin-top: 10px;" *ngIf="data.archivo">
+            <span style="font-weight: bold;">Descargar Archivo: </span><span class="material-icons" (click)="descargarArchivo(data)" style="color: #144AA7; cursor: pointer; position: absolute; margin-top: -5px;">get_app</span>
+        </div>
+    </div>
 </div>
 
 <ejs-dialog #dialogDocumentoDetalle allowDragging='true' [visible]="false" width='700px' isModal='true'>

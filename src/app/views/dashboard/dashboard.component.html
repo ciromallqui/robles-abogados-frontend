@@ -1,3 +1,54 @@
 <div class="dashboard">
-    <strong>AQUÍ SE MOSTRARÁ EL DASHBOARD</strong>
+    <div class="row">
+        <div class="col-lg-3 col-md-5 col-sm-6" style="padding: 0 20px 0 20px;">
+            <div tabindex="0" class="e-card" id="basic" style="height: 200px; border-radius: 20px; background: #e52020; color: #FFF;">
+                <div class="e-card-header">
+                    <div class="e-card-header-caption">
+                        <div class="e-card-title" style="text-align: center; font-weight: bold; font-size: 20px;">{{cantidadPersona}}</div>
+                    </div>
+                </div>
+                <div class="e-card-content" style="color: #FFF;">
+                    <div class="row">
+                        <div class="col-8" style="margin-top: 15px; font-size: 18px;"><strong>Clientes</strong></div>
+                        <div class="col-4"><span class="material-icons" style="font-size: 40px;">group_add</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-5 col-sm-6" style="padding: 0 20px 0 20px;">
+            <div tabindex="0" class="e-card" id="basic" style="height: 200px; border-radius: 20px; background: #e5c420; color: #FFF;">
+                <div class="e-card-header">
+                    <div class="e-card-header-caption">
+                        <div class="e-card-title" style="text-align: center; font-weight: bold; font-size: 20px;">{{cantidadUsuario}}</div>
+                    </div>
+                </div>
+                <div class="e-card-content" style="color: #FFF;">
+                    <div class="row">
+                        <div class="col-7" style="margin-top: 15px; font-size: 18px;"><strong>Usuarios</strong></div>
+                        <div class="col-5" style="display: inline-block;"><span class="material-icons" style="font-size: 40px;">person</span><span class="material-icons" style="position: absolute; margin-top: 19px;margin-left: -12px;font-size: 16px;">lock</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-5 col-sm-6" style="padding: 0 20px 0 20px;">
+            <div tabindex="0" class="e-card" id="basic" style="height: 200px; border-radius: 20px; background: #1dd520; color: #FFF;">
+                <div class="e-card-header">
+                    <div class="e-card-header-caption">
+                        <div class="e-card-title" style="text-align: center; font-weight: bold; font-size: 20px; padding: 10px;">{{expedienteTotal}}</div>
+                        <div>
+                            <div *ngFor="let data of expedientePorArea">
+                                <strong style="color: #000; text-transform: lowercase;">{{data.area}}: </strong><span>{{data.cantidadExpediente}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card-content" style="color: #FFF;">
+                    <div class="row">
+                        <div class="col-8" style="margin-top: 15px; font-size: 18px;"><strong>Expedientes</strong></div>
+                        <div class="col-4"><span class="material-icons" style="font-size: 40px;">business_center</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

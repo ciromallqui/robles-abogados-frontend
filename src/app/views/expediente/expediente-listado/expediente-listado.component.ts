@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { PageSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { ExpedienteService } from 'src/app/services/expediente.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'expediente-listado',
@@ -70,7 +71,27 @@ export class ExpedienteListadoComponent implements OnInit {
   }
 
   onClickEliminar(data){
-
+    swal.fire({
+      text: '¿Está seguro que desea eliminar el expediente?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'CANCELAR',
+      confirmButtonText: 'ACEPTAR'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let fechaEliminacion = new Date().getDate() +"/"+ new Date().getMonth() +"/"+ new Date().getFullYear();
+        this.expedienteService.eliminar({idExpediente: data.idExpediente, usuario: localStorage.getItem("USUARIO_SESSION"), fechaEliminacion: fechaEliminacion}).then(res => {
+          if(res.status == 1){
+            swal.fire({position: 'top-end',icon: 'success',title: 'El expediente fue eliminada correctamente.',showConfirmButton: false,toast: true,timer: 4000});
+            this.listar();
+          }else{
+            swal.fire({position: 'top-end',icon: 'error',title: 'No se pudo eliminar el expediente.',showConfirmButton: false,toast: true,timer: 4000});
+          }
+        });
+      }
+    })
   }
 
   cerrarDetalle(event){

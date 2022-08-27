@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { PageSettingsModel } from '@syncfusion/ej2-angular-grids';
+import { MenuItemModel } from '@syncfusion/ej2-angular-navigations';
 import { ExpedienteService } from 'src/app/services/expediente.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'expediente-mostrar',
@@ -20,6 +22,7 @@ export class ExpedienteMostrarComponent implements OnInit {
   
   public pageSettings: PageSettingsModel;
   public customAttributes: Object;
+  public AccountMenuItem: MenuItemModel[] = [];
 
   ngOnInit(): void {
     this.seleccionado = 'D';
@@ -27,7 +30,26 @@ export class ExpedienteMostrarComponent implements OnInit {
     this.expedienteService.inicializar({idExpediente: this.dataInput.idExpediente, idArea: this.dataInput.idArea}).then(res => {
       this.expediente = res.data.expediente;
       this.expediente.partesProcesales = res.data.partesProcesales;
+
+      const lista = []
+      res.data.listaArea.forEach(e => {
+        lista.push({text: e.descripcion, id: e.id});
+      });
+      setTimeout(() => {
+        this.AccountMenuItem = [{
+          text: 'Derivar Expediente al Área de:',
+          items: lista
+        }];
+      }, 500);
     });
+  }
+
+  itemsMenu(area): MenuItemModel[]{
+    const lista = [];
+    area.forEach(e => {
+      lista.push({text: e.descripcion, id: e.id});
+    });
+    return lista;
   }
 
   inicializarGrilla() {
@@ -48,5 +70,15 @@ export class ExpedienteMostrarComponent implements OnInit {
       case "D": this.seleccionado = 'D'; break;
       case "A": this.seleccionado = 'A'; break;
     }
+  }
+
+  onSelectMenu(event){
+    this.expedienteService.actualizarArea({idExpediente: this.dataInput.idExpediente, idArea: event.item.properties.id}).then(res =>{
+      if(res.status==1){
+        swal.fire({position: 'top-end',icon: 'success',title: 'El expediente se derivó con éxito.',showConfirmButton: false,toast: true,timer: 4000});
+      }else{
+        
+      }
+    });
   }
 }

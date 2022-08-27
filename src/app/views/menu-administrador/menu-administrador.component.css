@@ -12,7 +12,7 @@
 .menu-left{
     position: absolute;
     height: 100vh;
-    width: 220px;
+    width: 250px;
     background: rgb(34, 37, 52);
 }
 
@@ -35,10 +35,10 @@
 .gestion-persona, .inicio, 
 .gestion-usuario, .expediente{
     position: absolute;
-    width: calc(100% - 220px);
+    width: calc(100% - 250px);
     height: calc(100vh - 60px);
     margin-top: 60px;
-    margin-left: 220px;
+    margin-left: 250px;
     padding: 15px;
 }
 
@@ -46,4 +46,11 @@
     position : absolute;
     top      : 8px;
     right    : 5px;
+}
+
+
+.e-menu-wrapper ul .e-menu-item.e-menu-caret-icon, 
+.e-menu-container ul .e-menu-item.e-menu-caret-icon{
+    border: solid 2px #FFF;
+    border-radius: 20px 0 0 20px;
 }

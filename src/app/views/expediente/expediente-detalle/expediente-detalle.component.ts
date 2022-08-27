@@ -21,12 +21,12 @@ export class ExpedienteDetalleComponent implements OnInit {
   seleccionado: string;
   expediente: any = {};
   public listaArea: [];
-  public listaMotivo: [];
-  public listaProcedencia: [];
+  public listaMotivo = [{id: '1', descripcion: 'Motivo 1'},{id: '2', descripcion: 'Motivo 2'},{id: '3', descripcion: 'Motivo 3'}];
+  public listaProcedencia = [{id: '1', descripcion: 'Procedencia 1'},{id: '2', descripcion: 'Procedencia 2'},{id: '3', descripcion: 'Procedencia 3'}];
   public listaDepartamento: [];
   public listaProvincia: [];
   public listaDistrito: [];
-  public listaTipoParte: [];
+  public listaTipoParte = [{id: '1', descripcion: 'Parte 1'},{id: '2', descripcion: 'Parte 2'},{id: '3', descripcion: 'Parte 3'}];
   public datosLista: Object = { text: 'descripcion', value: 'id' };
 
   public month: number = new Date().getMonth();
@@ -44,12 +44,12 @@ export class ExpedienteDetalleComponent implements OnInit {
       }else{
         this.expediente  = this.expedienteInicializado;
         this.expediente.idExpediente = 0;
+        this.expediente.anio = this.fullYear;
         this.expediente.idArea = this.dataInput.idArea;
         this.expediente.nroExpediente = "EXP-01";
         let fechaActual = new Date(this.fullYear, this.month, this.date, 7, 0, 0);
         this.expediente.fechaInicio = fechaActual
         this.expediente.fecha = fechaActual
-        this.expediente.fechaCreacion = fechaActual
         this.expediente.partesProcesales = [{nombreCompleto: '', nroDocumento: '', codTipoParte: '', nuevaLista: false}];
       }
       this.expediente.usuario = localStorage.getItem("USUARIO_SESSION");
@@ -86,10 +86,10 @@ export class ExpedienteDetalleComponent implements OnInit {
         }
       });
     }else{
-      // this.expedienteService.modificar(this.expediente).then(res => {
-      //   swal.fire({position: 'top-end',icon: 'success',title: 'Se modificó el perfil del usuario.',showConfirmButton: false,toast: true,timer: 5000});
-      //   this.close.emit(true);
-      // });
+      this.expedienteService.modificar(this.expediente).then(res => {
+        swal.fire({position: 'top-end',icon: 'success',title: 'Los datos del expediente se modificó correctamente.',showConfirmButton: false,toast: true,timer: 5000});
+        this.close.emit(true);
+      });
     }
   }
 

@@ -86,7 +86,6 @@ export class PersonaListadoComponent implements OnInit {
         });
       }
     })
-
   }
 
   cerrarDetalle(event){

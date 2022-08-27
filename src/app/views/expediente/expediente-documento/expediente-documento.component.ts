@@ -18,14 +18,15 @@ export class ExpedienteDocumentoComponent implements OnInit {
   expediente: any = {};
   dataExpediente: any = {};
   showDetalle: boolean;
+  dataSource: [];
 
   ngOnInit(): void {
     this.listar();
   }
 
   listar(){
-    this.documentoService.listar(this.dataInput).then(res =>{
-
+    this.documentoService.listar({idExpediente: this.dataInput.idExpediente}).then(res =>{
+      this.dataSource = res.data;
     });
   }
 
@@ -39,5 +40,12 @@ export class ExpedienteDocumentoComponent implements OnInit {
     this.showDetalle = false;
     this.dialogDocumentoDetalle.hide();
     this.listar();
+  }
+
+  descargarArchivo(data){
+    const downloadLink = document.createElement('a');
+    downloadLink.href = 'data:application/octet-stream;base64,'+ data.archivo;
+    downloadLink.download = data.nombre;
+    downloadLink.click();
   }
 }
