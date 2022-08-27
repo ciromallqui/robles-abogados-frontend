@@ -32,4 +32,25 @@ export class ExpedienteService {
       parametro
     );
   }
+  
+  modificar(parametro): any {
+    return this.httpApiService.post(
+      this.host, "/expediente/modificar", 
+      parametro
+    );
+  }
+  
+  actualizarArea(parametro): any {
+    return this.httpApiService.post(
+      this.host, "/expediente/actualizarArea", 
+      parametro
+    );
+  }
+  
+  eliminar(parametro): any {
+    return this.httpApiService.post(
+      this.host, "/expediente/eliminar", 
+      parametro
+    );
+  }
 }
