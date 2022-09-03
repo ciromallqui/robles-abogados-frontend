@@ -53,4 +53,18 @@ export class ExpedienteService {
       parametro
     );
   }
+  
+  listarProvincia(parametro): any {
+    return this.httpApiService.post(
+      this.host, "/expediente/listarProvincia", 
+      parametro
+    );
+  }
+  
+  listarDistrito(parametro): any {
+    return this.httpApiService.post(
+      this.host, "/expediente/listarDistrito", 
+      parametro
+    );
+  }
 }

@@ -1,39 +1,47 @@
-<div class="filtros">
-    <div class="row">
-        <div class="col-lg-4">
-            <ejs-textbox placeholder="Número Expediente" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="filtro.nroExpediente" autocomplete="off"></ejs-textbox>
+<div *ngIf="!showReporte">
+    <div class="filtros">
+        <div class="row">
+            <div class="col-lg-4">
+                <ejs-textbox placeholder="Número Expediente" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="filtro.nroExpediente" autocomplete="off"></ejs-textbox>
+            </div>
+            <!-- <div class="col-lg-4">
+                <ejs-textbox placeholder="Nombres/Apellidos" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="filtro.nombre" autocomplete="off"></ejs-textbox>
+            </div> -->
+            <div class="col-lg-8" style="text-align: end; margin-bottom: 10px;">
+                <button type="button" class="btn btn-outline-primary btn-block" style="margin-top: 10px; font-weight: bold;" (click)="onClickBuscar()">BUSCAR</button>
+                <button type="button" class="btn btn-outline-primary btn-block" style="margin-top: 10px; font-weight: bold; margin-left: 20px;" (click)="onClickAgregar()">AGREGAR EXPEDIENTE</button>
+            </div>
         </div>
-        <!-- <div class="col-lg-4">
-            <ejs-textbox placeholder="Nombres/Apellidos" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="filtro.nombre" autocomplete="off"></ejs-textbox>
-        </div> -->
-        <div class="col-lg-8" style="text-align: end; margin-bottom: 10px;">
-            <button type="button" class="btn btn-outline-primary btn-block" style="margin-top: 10px; font-weight: bold;" (click)="onClickBuscar()">BUSCAR</button>
-            <button type="button" class="btn btn-outline-primary btn-block" style="margin-top: 10px; font-weight: bold; margin-left: 20px;" (click)="onClickAgregar()">AGREGAR EXPEDIENTE</button>
+    </div>
+    <div class="listado">
+        <div class="row">
+            <div class="col-12">
+                <ejs-grid #grid [dataSource]='dataSource' [allowPaging]="true" [pageSettings]='pageSettings' [allowSorting]='true' [allowTextWrap]='true'>
+                    <e-columns>
+                        <e-column [customAttributes]='customAttributes' [field]='column.nombre' [headerText]='column.titulo' [textAlign]='column.textAlign' width={{column.width}} *ngFor="let column of columnsToDisplay">
+                        <ng-template *ngIf="column.nombre=='acciones'" #template let-data>
+                            <ejs-tooltip #tooltip content='Editar expediente' cssClass='custom-tip-blue'>
+                                <span class="material-icons" (click)="onClickModificar(data)" style="cursor: pointer; color:#144AA7;">edit</span>
+                            </ejs-tooltip>
+                            <ejs-tooltip #tooltip content='Eliminar expediente' cssClass='custom-tip-red' *ngIf="data.idPersona!=1">
+                                <span class="material-icons" (click)="onClickEliminar(data)" style="cursor: pointer; color:#e00b55;">delete</span>
+                            </ejs-tooltip>
+                            <ejs-tooltip #tooltip content='Generar Reporte' cssClass='custom-tip-blue' *ngIf="data.idPersona!=1">
+                                <span class="material-icons" (click)="onClickReporte(data)" style="cursor: pointer; color:#144AA7;">picture_as_pdf</span>
+                            </ejs-tooltip>
+                        </ng-template>
+                        <ng-template *ngIf="column.nombre=='nroExpediente'" #template let-data>
+                            <span class="nroExpediente" (click)="onClickMostrarExpediente(data)">{{data.nroExpediente}}</span>
+                        </ng-template>
+                        </e-column>
+                    </e-columns>
+                </ejs-grid>
+            </div>
         </div>
     </div>
 </div>
-<div class="listado">
-    <div class="row">
-        <div class="col-12">
-            <ejs-grid #grid [dataSource]='dataSource' [allowPaging]="true" [pageSettings]='pageSettings' [allowSorting]='true' [allowTextWrap]='true'>
-                <e-columns>
-                    <e-column [customAttributes]='customAttributes' [field]='column.nombre' [headerText]='column.titulo' [textAlign]='column.textAlign' width={{column.width}} *ngFor="let column of columnsToDisplay">
-                    <ng-template *ngIf="column.nombre=='acciones'" #template let-data>
-                        <ejs-tooltip #tooltip content='Editar expediente' cssClass='custom-tip-blue'>
-                            <span class="material-icons" (click)="onClickModificar(data)" style="cursor: pointer; color:#144AA7;">edit</span>
-                        </ejs-tooltip>
-                        <ejs-tooltip #tooltip content='Eliminar expediente' cssClass='custom-tip-red' *ngIf="data.idPersona!=1">
-                            <span class="material-icons" (click)="onClickEliminar(data)" style="cursor: pointer; color:#e00b55;">delete</span>
-                        </ejs-tooltip>
-                    </ng-template>
-                    <ng-template *ngIf="column.nombre=='nroExpediente'" #template let-data>
-                        <span class="nroExpediente" (click)="onClickMostrarExpediente(data)">{{data.nroExpediente}}</span>
-                    </ng-template>
-                    </e-column>
-                </e-columns>
-            </ejs-grid>
-        </div>
-    </div>
+<div *ngIf="showReporte">
+    <reporte-expediente [dataInput]="dataExpediente" (close)="onClickCerrarReporte($event)"></reporte-expediente>
 </div>
 
 <ejs-dialog #dialogDetalle allowDragging='true' [visible]="false" width='900px' isModal='true'>

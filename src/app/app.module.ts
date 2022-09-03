@@ -25,6 +25,7 @@ import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { ExpedienteDocumentoComponent } from './views/expediente/expediente-documento/expediente-documento.component';
 import { ExpedienteMostrarComponent } from './views/expediente/expediente-mostrar/expediente-mostrar.component';
 import { ExpedienteDocumentoDetalleComponent } from './views/expediente/expediente-documento-detalle/expediente-documento-detalle.component';
+import { ReporteExpedienteComponent } from './views/reporte/reporte-expediente/reporte-expediente.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ExpedienteDocumentoDetalleComponent } from './views/expediente/expedien
     ExpedienteDetalleComponent,
     ExpedienteDocumentoComponent,
     ExpedienteMostrarComponent,
-    ExpedienteDocumentoDetalleComponent
+    ExpedienteDocumentoDetalleComponent,
+    ReporteExpedienteComponent
   ],
   imports: [
     BrowserModule,

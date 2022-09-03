@@ -18,4 +18,11 @@ export class ReporteService {
       parametro
     );
   }
+  
+  expediente(parametro): any {
+    return this.httpApiService.post(
+      this.host, "/reporte/expediente", 
+      parametro
+    );
+  }
 }

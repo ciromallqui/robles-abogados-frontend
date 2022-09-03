@@ -5,3 +5,17 @@
 .nroExpediente:hover{
     color: #144AA7;
 }
+
+.custom-tip-blue {
+    background: #144AA7;
+    color: #144AA7;
+    border-color: #144AA7;
+    margin-top: -8px;
+}
+
+.custom-tip-red {
+    background: #e00b52;
+    color: #e00b52;
+    border-color: #e00b52;
+    margin-top: -8px;
+}
