@@ -1,0 +1,118 @@
+<div class="container" style="padding-top: 20px; font-size: 16px; font-family: Arial, Helvetica, sans-serif;">
+    <div id="htmlData">
+        <div class="row">
+            <div class="col-12">
+                <div style="display: inline-block;">
+                    <img class="imagen-logo" src="assets/imagen/logo.jpeg" style="width: 150px; height: 100px; border-radius: 10px;">
+                    <strong style="position: absolute; margin: 30px 0 0 20px;">Estudio Jurídico Robles Abogados <br> acesores y consultores</strong>
+                </div>
+            </div>
+        </div>
+        <div class="row"><br><br></div>
+        <div class="row">
+            <div class="col-12" style="text-align: center;">
+                <strong style="font-weight: bold; text-decoration: underline; font-size: 20px;">REPORTE DE EXPEDIENTE</strong>
+            </div>
+        </div>
+        <div class="row"><br><br></div>
+        <div class="row">
+            <div class="col-12">
+                <strong>Expediente N°: </strong><span>{{expediente.nroExpediente}}</span>
+            </div>
+
+            <div class="col-md-7 col-xs-12">
+                <strong>Órgano Jurisd.: </strong><span>{{expediente.organoJurisdiccional}}</span>
+            </div>
+            <div class="col-md-5 col-xs-12">
+                <strong>Distrito Judicial: </strong><span>{{expediente.distrito}}</span>
+            </div>
+            
+            <div class="col-md-7 col-xs-12">
+                <strong>Juez: </strong><span>{{expediente.juezPonente}}</span>
+            </div>
+            <div class="col-md-5 col-xs-12">
+                <strong>Especialista: </strong><span>{{expediente.especialistaLegal}}</span>
+            </div>
+            
+            <div class="col-md-7 col-xs-12">
+                <strong>Fecha Inicio: </strong><span>{{expediente.fechaInicio}}</span>
+            </div>
+            <div class="col-md-5 col-xs-12">
+                <strong>Proceso: </strong><span>{{expediente.proceso}}</span>
+            </div>
+            
+            <div class="col-md-7 col-xs-12">
+                <strong>Materia: </strong><span>{{expediente.delitoPrincipal}}</span>
+            </div>
+            <div class="col-md-5 col-xs-12">
+                <strong>Estado: </strong><span></span>
+            </div>
+        </div>
+
+        <div class="row"><br><br></div>
+        <div class="row">
+            <div class="col-12" style="text-align: center;">
+                <strong style="font-weight: bold; color: #0D56DF;">PARTES PROCESALES</strong>
+            </div>
+        </div>
+        <div class="row"><br></div>
+        <div class="listado">
+            <div class="row">
+                <div class="col-12">
+                    <ejs-grid #grid [dataSource]='dataSource' [allowPaging]="true" [pageSettings]='pageSettings' [allowSorting]='true' [allowTextWrap]='true'>
+                        <e-columns>
+                            <e-column [customAttributes]='customAttributes' [field]='column.nombre' [headerText]='column.titulo' [textAlign]='column.textAlign' width={{column.width}} *ngFor="let column of columnsToDisplay">
+                            </e-column>
+                        </e-columns>
+                    </ejs-grid>
+                </div>
+            </div>
+        </div>
+        <div class="row"><br><br></div>
+        <div class="row">
+            <div class="col-12" style="text-align: center;">
+                <strong style="font-weight: bold; color: #0D56DF;">ACTOS PROCESALES</strong>
+            </div>
+        </div>
+        <div class="row"><br></div>
+        <div class="row" *ngFor="let data of actoProcesal">
+            <div class="col-12">
+                <div class="row" style="border: solid 1px rgb(155, 154, 154); padding: 6px;">
+                    <div class="col-md-7 col-xs-12">
+                        <strong>Fecha Inicio: </strong><span>{{data.fechaCreacion}}</span>
+                    </div>
+                    <div class="col-md-5 col-xs-12">
+                        <strong>Acto: </strong><span>{{data.asunto}}</span>
+                    </div>
+                    <div class="col-md-7 col-xs-12">
+                        <strong>Número: </strong><span>{{data.nroDocumento}}</span>
+                    </div>
+                    <div class="col-md-5 col-xs-12">
+                        <strong>N° de Hojas: </strong><span>{{data.folio}}</span>
+                    </div>
+                    <!-- <div class="col-12">
+                        <strong>Sumilla: </strong><span>{{data.nroHoja}}</span>
+                    </div> -->
+                    <div class="col-12">
+                        <strong>Usuario: </strong><span>{{data.usuarioCrea}}</span>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 8px;"></div>
+            </div>
+        </div>
+        <div *ngIf="actoProcesal.length==0">
+            <strong>No existe actos procesales para mostrar.</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="acciones">
+                <div class="progress" *ngIf="progressDownload">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">Espere mientras se descarga el archivo</div>
+                </div>
+                <button ejs-button cssClass="e-outline" [disabled]="progressDownload" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickDescargarReporte()">DESCARGAR REPORTE</button>
+                <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickSalir()">SALIR</button>
+            </div>
+        </div>
+    </div>
+</div>

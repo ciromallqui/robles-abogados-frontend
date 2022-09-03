@@ -117,10 +117,10 @@
         </div>
         <strong style="margin-top: 10px;">Echos</strong>
         <div class="col-4">
-            <ejs-dropdownlist [dataSource]='listaDepartamento' placeholder="Departamento" [fields]='datosLista' floatLabelType='Auto' [(value)]="expediente.codDepartamento"></ejs-dropdownlist>
+            <ejs-dropdownlist [dataSource]='listaDepartamento' placeholder="Departamento" [fields]='datosLista' floatLabelType='Auto' [(value)]="expediente.codDepartamento" (change)="onChangeDepartamento($event)"></ejs-dropdownlist>
         </div>
         <div class="col-4">
-            <ejs-dropdownlist [dataSource]='listaProvincia' placeholder="Provincia" [fields]='datosLista' floatLabelType='Auto' [(value)]="expediente.codProvincia"></ejs-dropdownlist>
+            <ejs-dropdownlist [dataSource]='listaProvincia' placeholder="Provincia" [fields]='datosLista' floatLabelType='Auto' [(value)]="expediente.codProvincia" (change)="onChangeProvincia($event)"></ejs-dropdownlist>
         </div>
         <div class="col-4">
             <ejs-dropdownlist [dataSource]='listaDistrito' placeholder="Distrito" [fields]='datosLista' floatLabelType='Auto' [(value)]="expediente.codDistrito"></ejs-dropdownlist>

@@ -24,6 +24,7 @@ export class ExpedienteListadoComponent implements OnInit {
   filtro: any = {};
   dataExpediente: any = {};
   showDetalle: boolean;
+  showReporte: boolean;
 
   @ViewChild('dialogDetalle') dialogDetalle: DialogComponent;
 
@@ -105,5 +106,14 @@ export class ExpedienteListadoComponent implements OnInit {
     this.dataExpediente.opcion = "VER";
     this.showDetalle = true;
     this.dialogDetalle.show();
+  }
+
+  onClickReporte(data){
+    this.dataExpediente = data;
+    this.showReporte = true;
+  }
+
+  onClickCerrarReporte(event){
+    this.showReporte = !event;
   }
 }

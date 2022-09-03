@@ -15,7 +15,7 @@ export class ExpedienteDocumentoDetalleComponent implements OnInit {
   constructor(private documentoService: DocumentoService) { }
 
   public documento: any = {};
-  public listaTipoDocumento: [];
+  public listaTipoDocumento = [{id: '1', descripcion: 'Tipo documento 1'},{id: '2', descripcion: 'Tipo documento 2'},{id: '3', descripcion: 'Tipo documento 3'}];
   public datosLista: Object = { text: 'descripcion', value: 'id' };
 
   public month: number = new Date().getMonth();

@@ -28,6 +28,7 @@
     "@syncfusion/ej2-angular-navigations": "18.4.44",
     "@syncfusion/ej2-angular-popups": "^18.4.41",
     "axios": "^0.26.1",
+    "jspdf": "^2.5.1",
     "rxjs": "~6.6.0",
     "sweetalert2": "^11.4.23",
     "tslib": "^2.0.0",

@@ -36,11 +36,15 @@ export class ExpedienteDetalleComponent implements OnInit {
 
   ngOnInit(): void {
     this.seleccionado = 'D';
-    this.expedienteService.inicializar({idExpediente: this.dataInput.idExpediente, idArea: this.dataInput.idArea}).then(res => {
+    this.dataInput.origen = 'DETALLE';
+    this.expedienteService.inicializar(this.dataInput).then(res => {
       this.listaArea = res.data.listaArea;
+      this.listaDepartamento = res.data.listaDepartamento;
       if(this.dataInput.opcion=="MODIFICAR"){
         this.expediente = res.data.expediente;
         this.expediente.partesProcesales = res.data.partesProcesales;
+        this.listaProvincia = res.data.listaProvincia;
+        this.listaDistrito = res.data.listaDistrito;
       }else{
         this.expediente  = this.expedienteInicializado;
         this.expediente.idExpediente = 0;
@@ -88,7 +92,7 @@ export class ExpedienteDetalleComponent implements OnInit {
     }else{
       this.expedienteService.modificar(this.expediente).then(res => {
         swal.fire({position: 'top-end',icon: 'success',title: 'Los datos del expediente se modificó correctamente.',showConfirmButton: false,toast: true,timer: 5000});
-        this.close.emit(true);
+        // this.close.emit(true);
       });
     }
   }
@@ -102,6 +106,18 @@ export class ExpedienteDetalleComponent implements OnInit {
       case "D": this.seleccionado = 'D'; break;
       case "O": this.seleccionado = 'O'; break;
     }
+  }
+
+  onChangeDepartamento(event){
+    this.expedienteService.listarProvincia({codDepartamento: event?.itemData?.id}).then(res =>{
+      this.listaProvincia = res.data.listaProvincia;
+    });
+  }
+  
+  onChangeProvincia(event){
+    this.expedienteService.listarDistrito({codProvincia: event?.itemData?.id}).then(res =>{
+      this.listaDistrito = res.data.listaDistrito;
+    });
   }
 
   expedienteInicializado: any = {
@@ -130,9 +146,9 @@ export class ExpedienteDetalleComponent implements OnInit {
     nroCarpeta: '',
     nroDenuncia: '',
     ubicacionFisica: '',
-    codDepartamento: '',
-    codProvincia: '',
-    codDistrito: '',
+    codDepartamento: '0',
+    codProvincia: '0',
+    codDistrito: '0',
     anexoCaserio: '',
     fecha: '',
     usuario: '',
