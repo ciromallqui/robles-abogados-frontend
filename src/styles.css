@@ -13,7 +13,7 @@
 }
 
 .e-kanban .e-kanban-table .e-header-cells{
-    background: rgb(39, 154, 186);
+    background: rgb(13, 86, 223);
     color: #fff;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .e-dlg-header-content {
-    background-color: #1d83c2;
+    background-color: #0D56DF;
 }
 .e-dialog.e-draggable .e-dlg-header-content{
     height: 40px;
@@ -47,24 +47,24 @@
 
 .e-btn.e-outline.e-primary, .e-css.e-btn.e-outline.e-primary {
     background-color: transparent;
-    border-color: rgb(39, 154, 186);
-    color: rgb(39, 154, 186);
+    border-color: rgb(13, 86, 223);
+    color: rgb(13, 86, 223);
     border-radius: 7px;
     padding: 8px;
     margin: 5px;
 }
 
 .e-btn.e-outline.e-primary:hover, .e-css.e-btn.e-outline.e-primary:hover{
-    background-color: rgb(39, 154, 186);
+    background-color: rgb(13, 86, 223);
     color: #FFF;
 }
 
 .e-float-input.e-input-group:not(.e-float-icon-left) .e-float-line::before,.e-float-input.e-control-wrapper.e-input-group:not(.e-float-icon-left) .e-float-line::before,.e-float-input.e-input-group:not(.e-float-icon-left) .e-float-line::after,.e-float-input.e-control-wrapper.e-input-group:not(.e-float-icon-left) .e-float-line::after {
-  background-color: rgb(39, 154, 186);
+  background-color: rgb(13, 86, 223);
 }
 
 .e-ddl.e-lib.e-input-group.e-control-wrapper.e-float-input.e-input-focus .e-float-text.e-label-top {
-  color: rgb(39, 154, 186);
+  color: rgb(13, 86, 223);
   font-weight: bold;
 }
 
@@ -87,12 +87,12 @@
 .e-float-input.e-control-wrapper:not(.e-error).e-input-focus input ~ label.e-float-text,
 .e-float-input.e-control-wrapper.e-bigger:not(.e-error).e-input-focus input ~ label.e-float-text,
 .e-bigger .e-float-input.e-control-wrapper:not(.e-error).e-input-focus input ~ label.e-float-text {
-    color: rgb(39, 154, 186);
+    color: rgb(13, 86, 223);
     font-weight: bold;
 }
 
 .e-float-input.e-control-wrapper:not(.e-error) input:valid ~ label.e-float-text, .e-float-input.e-control-wrapper:not(.e-error) input ~ label.e-label-top.e-float-text {
-    color: rgb(39, 154, 186);
+    color: rgb(13, 86, 223);
     font-size: 15px;
     font-weight: bold;
 }
@@ -127,7 +127,7 @@
     text-align: center;
 }
 .btn-numeric span{
-    background: rgb(49, 194, 95); 
+    background: rgb(13, 86, 223);
     color: #FFF; 
     font-weight: bold; 
     font-size: 14px; 

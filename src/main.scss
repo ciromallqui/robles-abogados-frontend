@@ -35,7 +35,7 @@ $accent-font: #fff !default;
 $xs-placeholder-color-font: #666666;
 $xs-color-font: #181717;
 
-$primary: #3f51b5 !default;
+$primary: #0D56DF!default;
 $primary-50: #e8eaf6 !default;
 $primary-100: #c5cae9 !default;
 $primary-200: #9fa8da !default;
@@ -88936,7 +88936,7 @@ $bborder-selection: #3f52b5;
 
 // PRH
 .xs-plugin .titulo-detalle {
-  background: #144AA7 !important;
+  background: #279ABA !important;
 }
 .e-sortnumber {
   display: none !important;
@@ -88958,22 +88958,22 @@ $bborder-selection: #3f52b5;
 
 .e-btn.e-outline.e-primary, .e-css.e-btn.e-outline.e-primary {
     background-color: transparent !important;
-    border-color: rgb(39, 154, 186) !important;
-    color: rgb(39, 154, 186) !important;
+    border-color: rgb(13, 86, 223) !important;
+    color: rgb(13, 86, 223) !important;
     border-radius: 7px;
     padding: 8px !important;
     margin: 5px !important;
 }
 
 .e-btn.e-outline.e-primary:hover, .e-css.e-btn.e-outline.e-primary:hover{
-    background-color: rgb(39, 154, 186) !important;
+    background-color: rgb(13, 86, 223) !important;
     color: #FFF !important;
 }
 
 .e-float-input.e-input-group:not(.e-float-icon-left) .e-float-line::before,.e-float-input.e-control-wrapper.e-input-group:not(.e-float-icon-left) .e-float-line::before,.e-float-input.e-input-group:not(.e-float-icon-left) .e-float-line::after,.e-float-input.e-control-wrapper.e-input-group:not(.e-float-icon-left) .e-float-line::after {
-  background-color: rgb(39, 154, 186) !important;
+  background-color: rgb(13, 86, 223) !important;
 }
 
 .e-ddl.e-lib.e-input-group.e-control-wrapper.e-float-input.e-input-focus .e-float-text.e-label-top {
-  color: rgb(39, 154, 186) !important;
+  color: rgb(13, 86, 223) !important;
 }
