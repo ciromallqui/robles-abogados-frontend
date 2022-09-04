@@ -1,9 +1,13 @@
 <div>
     <div class="row">
-        <div class="col-12">
-            <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickAgragarDocumento()">AGREGAR DOCUMENTO</button>
+        <div class="col-lg-6">
+            <ejs-textbox placeholder="Asunto/Número/Nombre" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="filtro.busqueda" autocomplete="off"></ejs-textbox>
         </div>
-    </div>
+        <div class="col-6" style="text-align: end;">
+            <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickBuscar()">BUSCAR</button>
+            <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickAgragar()">AGREGAR DOCUMENTO</button>
+        </div>
+    </div><br>
     <div class="row" *ngFor="let data of dataSource" style="border-top: solid 1px #c7c7c7; padding-bottom: 10px;">
         <strong style="margin-top: 10px; font-size: 16px; color: #144AA7;">{{data.asunto}}</strong>
         <span style="margin-top: 10px;">{{data.descripcion}}</span>
