@@ -14,12 +14,19 @@ export class DashboardComponent implements OnInit {
   expedienteTotal: number;
   cantidadPersona: number;
   cantidadUsuario: number;
+  documentoBuscado: number;
+  documentoEncontrado: number;
+  fechaBusqueda: string;
   ngOnInit(): void {
     this.reporteService.inicializar({}).then(res =>{
       this.expedientePorArea = res.data.expedientePorArea;
       this.expedienteTotal = res.data.expedientes.cantidad;
       this.cantidadPersona = res.data.personas.cantidad;
       this.cantidadUsuario = res.data.usuarios.cantidad;
+
+      this.documentoBuscado = res.data.documentoBuscado.cantidad;
+      this.documentoEncontrado = res.data.documentoEncontrado.cantidad;
+      this.fechaBusqueda = res.data.documentoEncontrado.fechaBusqueda;
     });
   }
 
