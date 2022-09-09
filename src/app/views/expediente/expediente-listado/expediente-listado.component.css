@@ -19,3 +19,22 @@
     border-color: #e00b52;
     margin-top: -8px;
 }
+
+.estado{
+    color: #FFF;
+    padding: 3px 4px 3px 4px;
+    border-radius: 5px;
+}
+
+.pendiente{
+    background: #1b77b5;
+}
+.derivado{
+    background: #dd8521;
+}
+.revision{
+    background: #19b93c;
+}
+.archivado{
+    background: #dd3416;
+}

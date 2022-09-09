@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { PageSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { MenuItemModel } from '@syncfusion/ej2-angular-navigations';
+import { AuditoriaService } from 'src/app/services/auditoria.service';
 import { ExpedienteService } from 'src/app/services/expediente.service';
 import swal from 'sweetalert2';
 
@@ -14,7 +15,10 @@ export class ExpedienteMostrarComponent implements OnInit {
   @Input() dataInput: any;
   @Output() close: EventEmitter<any> = new EventEmitter();
   
-  constructor(private expedienteService: ExpedienteService) { }
+  constructor(
+    private expedienteService: ExpedienteService,
+    private auditoriaService: AuditoriaService
+  ) { }
 
   seleccionado: string;
   expediente: any = {};
@@ -23,6 +27,8 @@ export class ExpedienteMostrarComponent implements OnInit {
   public pageSettings: PageSettingsModel;
   public customAttributes: Object;
   public AccountMenuItem: MenuItemModel[] = [];
+  public datosLista: Object = { text: 'descripcion', value: 'id' };
+  public listaEstado = [{descripcion: 'Pendiente', id: '1'},{descripcion: 'Derivado', id: '2'},{descripcion: 'En Revisión', id: '3'},{descripcion: 'Archivado', id: '4'}];
 
   listaMotivo = [{id: '1', descripcion: 'Motivo 1'},{id: '2', descripcion: 'Motivo 2'},{id: '3', descripcion: 'Motivo 3'}];
   listaProcedencia = [{id: '1', descripcion: 'Procedencia 1'},{id: '2', descripcion: 'Procedencia 2'},{id: '3', descripcion: 'Procedencia 3'}];
@@ -97,10 +103,34 @@ export class ExpedienteMostrarComponent implements OnInit {
       this.expedienteService.actualizarArea({idExpediente: this.dataInput.idExpediente, idArea: event.item.properties.id}).then(res =>{
         if(res.status==1){
           swal.fire({position: 'top-end',icon: 'success',title: 'El expediente se derivó con éxito.',showConfirmButton: false,toast: true,timer: 4000});
+          const param = {
+            descripcion: 'Derivación del expediente',
+            accion: 'DERIVAR_EXPEDIENTE',
+            peticion: 'Derivado',
+            areaOrigen: this.dataInput.idArea,
+            areaDestino: event.item.properties.id,
+            idExpediente: this.dataInput.idExpediente,
+            idDocumento: 0,
+            usuario: localStorage.getItem("USUARIO_SESSION")
+          };
+          this.auditoriaService.agregar(param).then(res =>{});
         }else{
           
         }
       });
     }
+  }
+
+  onSelectEstado(event){
+    if(event?.itemData?.id=='2'){
+      swal.fire({position: 'top-end',icon: 'info',title: 'No se puede derivar a la misma área.',showConfirmButton: false,toast: false,timer: 4000});
+      setTimeout(() => {
+        this.expediente.codEstado = this.dataInput.codEstado;
+      }, 500);
+      return;
+    }
+    this.expedienteService.actualizarEstado({idExpediente: this.dataInput.idExpediente, codEstado: event?.itemData?.id}).then(res =>{
+      swal.fire({position: 'top-end',icon: 'success',title: 'Estado actualizado correctamente.',showConfirmButton: false,toast: true,timer: 4000});
+    });
   }
 }

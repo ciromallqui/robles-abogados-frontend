@@ -72,8 +72,8 @@ export class ExpedienteDocumentoComponent implements OnInit {
       descripcion: 'Busqueda del un documento',
       accion: 'BUSCAR_DOCUMENTO',
       peticion: this.filtro.busqueda,
-      cantPeticion: 0,
-      cantResultado: 0,
+      areaOrigen: this.dataInput.idArea,
+      areaDestino: 0,
       idExpediente: this.dataInput.idExpediente,
       idDocumento: idDoc,
       usuario: localStorage.getItem("USUARIO_SESSION")

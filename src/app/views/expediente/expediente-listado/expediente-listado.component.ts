@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { PageSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
+import { AuditoriaService } from 'src/app/services/auditoria.service';
 import { ExpedienteService } from 'src/app/services/expediente.service';
 import swal from 'sweetalert2';
 
@@ -14,8 +15,11 @@ export class ExpedienteListadoComponent implements OnInit {
   @Input() area: any;
 
   constructor(
-    private expedienteService: ExpedienteService
+    private expedienteService: ExpedienteService,
+    private auditoriaService: AuditoriaService
   ) { }
+
+  @ViewChild('dialogDetalle') dialogDetalle: DialogComponent;
 
   public pageSettings: PageSettingsModel;
   public customAttributes: Object;
@@ -26,10 +30,12 @@ export class ExpedienteListadoComponent implements OnInit {
   showDetalle: boolean;
   showReporte: boolean;
 
-  @ViewChild('dialogDetalle') dialogDetalle: DialogComponent;
+  public datosLista: Object = { text: 'descripcion', value: 'id' };
+  public listaEstado = [{descripcion: 'Pendiente', id: '1'},{descripcion: 'Derivado', id: '2'},{descripcion: 'En Revisión', id: '3'},{descripcion: 'Archivado', id: '4'},{descripcion: '-- Mostrar Todo --', id: null}];
 
   ngOnInit(): void {
     this.filtro.nroExpediente = '';
+    this.filtro.codEstado = '';
     this.inicializarGrilla();
     this.listar();
   }
@@ -42,7 +48,9 @@ export class ExpedienteListadoComponent implements OnInit {
       { nombre: "fechaInicio", titulo: "FECHA INICIO", visible: true, tipo: "string", width: 120 },
       { nombre: "delitoPrincipal", titulo: "MATERIA/DELITO", visible: true, tipo: "string", width: '' },
       { nombre: "dias", titulo: "DÍAS", visible: true, tipo: "string", width: 150 },
-      { nombre: "area", titulo: "ÁREA", visible: true, tipo: "string", width: 150 }
+      { nombre: "area", titulo: "ÁREA", visible: true, tipo: "string", width: 150 },
+      { nombre: "codEstado", titulo: "ESTADO", visible: true, tipo: "string", width: 150 },
+      { nombre: "derivacion", titulo: "", visible: true, tipo: "string", width: 50 }
     ];
   }
 
@@ -71,6 +79,25 @@ export class ExpedienteListadoComponent implements OnInit {
     this.dialogDetalle.show();
   }
 
+  onClickConfirmar(data){
+    swal.fire({
+      text: 'Antes de confirmar la entrega, asegúrese de la conformidad de los datos.',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'CANCELAR',
+      confirmButtonText: 'ACEPTAR'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.auditoriaService.modificar({idExpediente: data.idExpediente, usuario: localStorage.getItem("USUARIO_SESSION")}).then(res =>{
+          swal.fire({position: 'top-end',icon: 'success',title: 'El expediente se confirmó con éxito.',showConfirmButton: false,toast: true,timer: 5000});
+          this.listar();
+        });
+      }
+    });
+  }
+
   onClickEliminar(data){
     swal.fire({
       text: '¿Está seguro que desea eliminar el expediente?',
@@ -92,7 +119,7 @@ export class ExpedienteListadoComponent implements OnInit {
           }
         });
       }
-    })
+    });
   }
 
   cerrarDetalle(event){
@@ -103,6 +130,7 @@ export class ExpedienteListadoComponent implements OnInit {
 
   onClickMostrarExpediente(data){
     this.dataExpediente = data;
+    this.dataExpediente.idArea = this.area;
     this.dataExpediente.opcion = "VER";
     this.showDetalle = true;
     this.dialogDetalle.show();

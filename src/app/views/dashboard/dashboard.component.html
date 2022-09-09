@@ -50,14 +50,36 @@
                 </div>
             </div>
         </div>
-
+    </div><br>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <strong style="font-size: 16px;">Dashboard de indicadores</strong>
+            <ejs-datepicker #fecha [allowEdit]=false format='dd/MM/yyyy' placeholder='Indicadores de la Fecha:' [(value)]="fechaIndicador" floatLabelType="Auto" (change)="onSelectFecha($event)"></ejs-datepicker>
+        </div><div class="col-12"></div><br>
         <div class="col-lg-3 col-md-5 col-sm-6" style="padding: 0 20px 10px 20px;">
             <div tabindex="0" class="e-card" id="basic" style="height: 200px; border-radius: 20px; background: #206fe5; color: #FFF;">
                 <div class="e-card-header">
-                    <div class="e-card-header-caption">
-                        <div class="e-card-title" style="text-align: center; font-weight: bold; font-size: 20px; padding: 10px;">{{fechaBusqueda}}</div>
-                        <div><strong style="color: #000; text-transform: lowercase;">Documentos buscados: </strong><span>{{documentoBuscado}}</span></div>
-                        <div><strong style="color: #000; text-transform: lowercase;">Documentos Encontrados: </strong><span>{{documentoEncontrado}}</span></div>
+                    <div class="e-card-header-caption" style="color: #FFF;">
+                        <div class="e-card-title" style="text-align: center; font-weight: bold; font-size: 20px; padding: 10px;">{{fechaBusquedaExp}}</div>
+                        <div><strong style="text-transform: lowercase;">Expedientes Derivados: </strong><span>{{expedienteDerivado}}</span></div>
+                        <div><strong style="text-transform: lowercase;">Expedientes Atendidos: </strong><span>{{expedienteAtendido}}</span></div>
+                    </div>
+                </div>
+                <div class="e-card-content" style="color: #FFF;">
+                    <div class="row">
+                        <div class="col-8" style="margin-top: 15px; font-size: 18px;"><strong>Primer Indicador</strong></div>
+                        <div class="col-4"><span class="material-icons" style="font-size: 40px;">receipt</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-5 col-sm-6" style="padding: 0 20px 10px 20px;">
+            <div tabindex="0" class="e-card" id="basic" style="height: 200px; border-radius: 20px; background: #206fe5; color: #FFF;">
+                <div class="e-card-header">
+                    <div class="e-card-header-caption" style="color: #FFF;">
+                        <div class="e-card-title" style="text-align: center; font-weight: bold; font-size: 20px; padding: 10px;">{{fechaBusquedaDoc}}</div>
+                        <div><strong style="text-transform: lowercase;">Documentos buscados: </strong><span>{{documentoBuscado}}</span></div>
+                        <div><strong style="text-transform: lowercase;">Documentos Encontrados: </strong><span>{{documentoEncontrado}}</span></div>
                     </div>
                 </div>
                 <div class="e-card-content" style="color: #FFF;">

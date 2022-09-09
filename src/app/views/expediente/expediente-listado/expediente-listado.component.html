@@ -2,12 +2,15 @@
     <div class="filtros">
         <div class="row">
             <div class="col-lg-4">
-                <ejs-textbox placeholder="Número Expediente" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="filtro.nroExpediente" autocomplete="off"></ejs-textbox>
+                <ejs-textbox placeholder="Número del Expediente" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="filtro.nroExpediente" autocomplete="off"></ejs-textbox>
+            </div>
+            <div class="col-lg-3">
+                <ejs-dropdownlist [dataSource]='listaEstado' placeholder="Estado" [fields]='datosLista' floatLabelType='Auto' [(value)]="filtro.codEstado"></ejs-dropdownlist>
             </div>
             <!-- <div class="col-lg-4">
                 <ejs-textbox placeholder="Nombres/Apellidos" floatLabelType="Auto" type="text" [readonly]='false' [(value)]="filtro.nombre" autocomplete="off"></ejs-textbox>
             </div> -->
-            <div class="col-lg-8" style="text-align: end; margin-bottom: 10px;">
+            <div class="col-lg-5" style="text-align: end; margin-bottom: 10px;">
                 <button type="button" class="btn btn-outline-primary btn-block" style="margin-top: 10px; font-weight: bold;" (click)="onClickBuscar()">BUSCAR</button>
                 <button type="button" class="btn btn-outline-primary btn-block" style="margin-top: 10px; font-weight: bold; margin-left: 20px;" (click)="onClickAgregar()">AGREGAR EXPEDIENTE</button>
             </div>
@@ -32,6 +35,17 @@
                         </ng-template>
                         <ng-template *ngIf="column.nombre=='nroExpediente'" #template let-data>
                             <span class="nroExpediente" (click)="onClickMostrarExpediente(data)">{{data.nroExpediente}}</span>
+                        </ng-template>
+                        <ng-template *ngIf="column.nombre=='codEstado'" #template let-data>
+                            <span class="estado pendiente" *ngIf="data.codEstado == '1'">Pendiente</span>
+                            <span class="estado derivado" *ngIf="data.codEstado == '2'">Derivado</span>
+                            <span class="estado revision" *ngIf="data.codEstado == '3'">En Revisión</span>
+                            <span class="estado archivado" *ngIf="data.codEstado == '4'">Archivado</span>
+                        </ng-template>
+                        <ng-template *ngIf="column.nombre=='derivacion'" #template let-data>
+                            <ejs-tooltip #tooltip content='Confirmar Pase' cssClass='custom-tip-red' *ngIf="data.codEstado == '2'">
+                                <span class="material-icons" (click)="onClickConfirmar(data)" style="cursor: pointer; color:#ff0000;">info</span>
+                            </ejs-tooltip>
                         </ng-template>
                         </e-column>
                     </e-columns>

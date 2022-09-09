@@ -47,6 +47,13 @@ export class ExpedienteService {
     );
   }
   
+  actualizarEstado(parametro): any {
+    return this.httpApiService.post(
+      this.host, "/expediente/actualizarEstado", 
+      parametro
+    );
+  }
+  
   eliminar(parametro): any {
     return this.httpApiService.post(
       this.host, "/expediente/eliminar", 

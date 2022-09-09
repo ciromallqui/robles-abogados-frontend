@@ -1,10 +1,13 @@
 <div>
     <div class="row" style="margin-bottom: 10px;"> <!-- TAB -->
-        <div style="display: inline-block; margin-top: 20px; margin-bottom: 10px;" class="col-6">
+        <div style="display: inline-block; margin-top: 20px; margin-bottom: 10px;" class="col-md-4">
             <span class="boton detalle" (click)="mostrarTab('D')" [ngClass]="{activeDetalle: seleccionado === 'D'}">DETALLE</span>
             <span class="boton actos" (click)="mostrarTab('A')" [ngClass]="{activeActos: seleccionado === 'A'}">DOCUMENTOS</span>
         </div>
-        <div class="col-6" style="text-align: end; margin-top: 10px;" *ngIf="seleccionado=='D'">
+        <div class="col-md-4" *ngIf="seleccionado=='D'">
+            <ejs-dropdownlist [dataSource]='listaEstado' placeholder="Estado actual del expediente" [fields]='datosLista' floatLabelType='Auto' [readonly]="expediente.codEstado=='2' || expediente.codEstado=='4'" [(value)]="expediente.codEstado" (select)="onSelectEstado($event)"></ejs-dropdownlist>
+        </div>
+        <div class="col-md-4" style="text-align: end; margin-top: 10px;" *ngIf="seleccionado=='D' && (dataInput.codEstado!='2' && dataInput.codEstado!='4')">
             <ejs-menu [items]="AccountMenuItem" cssClass="dock-menu" (select)="onSelectMenu($event)"></ejs-menu>
         </div>
     </div>

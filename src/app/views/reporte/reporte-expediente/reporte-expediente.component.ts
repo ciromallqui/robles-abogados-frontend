@@ -26,6 +26,7 @@ export class ReporteExpedienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.inicializarGrilla();
+    this.dataInput.busqueda = '';
     this.reporteService.expediente(this.dataInput).then(res =>{
       this.expediente = res.data.expediente;
       this.dataSource = res.data.parteProcesal;

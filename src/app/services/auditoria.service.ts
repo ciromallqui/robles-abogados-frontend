@@ -18,4 +18,11 @@ export class AuditoriaService {
       parametro
     );
   }
+  
+  modificar(parametro): any {
+    return this.httpApiService.post(
+      this.host, "/auditoria/modificar", 
+      parametro
+    );
+  }
 }
