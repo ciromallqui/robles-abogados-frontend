@@ -57,6 +57,7 @@ export class ExpedienteDocumentoComponent implements OnInit {
   cerrarDetalle(event){
     this.showDetalle = false;
     this.dialogDocumentoDetalle.hide();
+    this.dataInput.busqueda = '';
     this.listar();
   }
 
