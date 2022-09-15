@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { PageSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
+import { ValidarPerfil } from 'src/app/helper/ValidarPerfil';
 import { AuditoriaService } from 'src/app/services/auditoria.service';
 import { ExpedienteService } from 'src/app/services/expediente.service';
 import swal from 'sweetalert2';
@@ -55,7 +56,8 @@ export class ExpedienteListadoComponent implements OnInit {
   }
 
   listar(){
-    this.filtro.idArea = this.area;
+    var perfil =  new ValidarPerfil;
+    this.filtro.idArea = perfil.get();
     this.expedienteService.listar(this.filtro).then(res =>{
       this.dataSource = res.data;
     });

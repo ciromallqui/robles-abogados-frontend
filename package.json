@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~11.2.12",
     "@angular/platform-browser-dynamic": "~11.2.12",
     "@angular/router": "~11.2.12",
+    "@auth0/angular-jwt": "^5.0.2",
     "@syncfusion/ej2-angular-buttons": "18.4.44",
     "@syncfusion/ej2-angular-calendars": "18.4.43",
     "@syncfusion/ej2-angular-dropdowns": "18.4.44",
