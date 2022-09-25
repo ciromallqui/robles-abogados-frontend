@@ -15,7 +15,6 @@ export class ValidarPerfil{
             case "GERENTE": result = '3'; break;
             case "ASISTENTE": result = '4'; break;
             case "ABOGADO": result = '5'; break;
-
         }
         return result;
     }
