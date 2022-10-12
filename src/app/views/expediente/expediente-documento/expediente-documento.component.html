@@ -5,7 +5,7 @@
         </div>
         <div class="col-6" style="text-align: end;">
             <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickBuscar()">BUSCAR</button>
-            <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickAgragar()">AGREGAR DOCUMENTO</button>
+            <button ejs-button cssClass="e-outline" [isPrimary]="true" style="padding: 10px; margin: 10px;" (click)="onClickAgragar()" *ngIf="idArea!=0">AGREGAR DOCUMENTO</button>
         </div>
     </div><br>
     <div class="row" *ngFor="let data of dataSource" style="border-top: solid 1px #c7c7c7; padding-bottom: 10px;">

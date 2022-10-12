@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { PageSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { MenuItemModel } from '@syncfusion/ej2-angular-navigations';
+import { ValidarPerfil } from 'src/app/helper/ValidarPerfil';
 import { AuditoriaService } from 'src/app/services/auditoria.service';
 import { ExpedienteService } from 'src/app/services/expediente.service';
 import swal from 'sweetalert2';
@@ -14,11 +15,15 @@ export class ExpedienteMostrarComponent implements OnInit {
 
   @Input() dataInput: any;
   @Output() close: EventEmitter<any> = new EventEmitter();
+  idArea: number = 0;
   
   constructor(
     private expedienteService: ExpedienteService,
     private auditoriaService: AuditoriaService
-  ) { }
+  ) { 
+    let perfil = new ValidarPerfil;
+    this.idArea = perfil.getId();
+  }
 
   seleccionado: string;
   expediente: any = {};

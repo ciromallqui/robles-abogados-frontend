@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
+import { ValidarPerfil } from 'src/app/helper/ValidarPerfil';
 import { AuditoriaService } from 'src/app/services/auditoria.service';
 import { DocumentoService } from 'src/app/services/documento.service';
 
@@ -11,11 +12,15 @@ import { DocumentoService } from 'src/app/services/documento.service';
 export class ExpedienteDocumentoComponent implements OnInit {
 
   @Input() dataInput: any;
+  idArea: number = 0;
   
   constructor(
     private documentoService: DocumentoService,
     private auditoriaService: AuditoriaService
-  ) { }
+  ) { 
+    let perfil = new ValidarPerfil;
+    this.idArea = perfil.getId();
+  }
 
   @ViewChild('dialogDocumentoDetalle') dialogDocumentoDetalle: DialogComponent;
 

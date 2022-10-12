@@ -13,12 +13,14 @@ import swal from 'sweetalert2';
 })
 export class ExpedienteListadoComponent implements OnInit {
 
-  @Input() area: any;
+  perfil: ValidarPerfil;
 
   constructor(
     private expedienteService: ExpedienteService,
     private auditoriaService: AuditoriaService
-  ) { }
+  ) { 
+    this.perfil =  new ValidarPerfil;
+  }
 
   @ViewChild('dialogDetalle') dialogDetalle: DialogComponent;
 
@@ -37,6 +39,7 @@ export class ExpedienteListadoComponent implements OnInit {
   ngOnInit(): void {
     this.filtro.nroExpediente = '';
     this.filtro.codEstado = '';
+    this.filtro.idArea = this.perfil.getId();
     this.inicializarGrilla();
     this.listar();
   }
@@ -56,8 +59,7 @@ export class ExpedienteListadoComponent implements OnInit {
   }
 
   listar(){
-    var perfil =  new ValidarPerfil;
-    this.filtro.idArea = perfil.get();
+    this.filtro.idUsuario = localStorage.getItem("ID_USUARIO");
     this.expedienteService.listar(this.filtro).then(res =>{
       this.dataSource = res.data;
     });
@@ -70,7 +72,7 @@ export class ExpedienteListadoComponent implements OnInit {
   onClickAgregar(){
     this.dataExpediente.opcion = "AGREGAR";
     this.dataExpediente.idExpediente = 0;
-    this.dataExpediente.idArea = this.area;
+    this.dataExpediente.idArea = this.perfil.getId();
     this.showDetalle = true;
     this.dialogDetalle.show();
   }
@@ -132,7 +134,7 @@ export class ExpedienteListadoComponent implements OnInit {
 
   onClickMostrarExpediente(data){
     this.dataExpediente = data;
-    this.dataExpediente.idArea = this.area;
+    this.dataExpediente.idArea = this.perfil.getId();
     this.dataExpediente.opcion = "VER";
     this.showDetalle = true;
     this.dialogDetalle.show();

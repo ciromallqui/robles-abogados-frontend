@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuEventArgs, MenuItemModel } from '@syncfusion/ej2-angular-navigations';
+import { ValidarPerfil } from 'src/app/helper/ValidarPerfil';
 
 @Component({
   selector: 'menu-administrador',
@@ -8,22 +9,30 @@ import { MenuEventArgs, MenuItemModel } from '@syncfusion/ej2-angular-navigation
 })
 export class MenuAdministradorComponent implements OnInit {
 
-  constructor() { }
+  view: string = "I";
+
+  private perfil: ValidarPerfil;
+  constructor() {
+    this.perfil =  new ValidarPerfil;
+   }
 
   public AccountMenuItem: MenuItemModel[] = [];
   public menuItems: MenuItemModel[] = [
     {text: 'INICIO', id: 'I'},{text: 'Gestión de Personas', id: 'GP'},{text: 'Gestión de Usuarios/Perfiles', id: 'GR'}, {separator: true},
     {text: 'Expedientes', id: 'EXP'}
   ];
-
-  view: string = "I";
-  areaInput: string;
+  
 
   ngOnInit(): void {
     this.AccountMenuItem = [{
-      text: localStorage.getItem("NOMBRE_COMPLETO"),
+      text: localStorage.getItem("NOMBRE_COMPLETO") +" - "+ this.perfil.getText(),
       items: [{text: 'Cambiar clave', id: 'CC'}, {text: 'Cerrar sesión', id: 'CS'}]
     }];
+
+    if (this.perfil.getId() == 0){
+      this.view = 'EXP';
+      this.menuItems = [{text: 'Expedientes', id: 'EXP'}]
+    }
   }
 
   onSelectMenu(e: MenuEventArgs): void {
@@ -50,7 +59,6 @@ export class MenuAdministradorComponent implements OnInit {
       case "GR":
         this.view = "GR"; break;
       case "EXP":
-        this.areaInput = "1";
         this.view = "EXP"; break;
     }
   }

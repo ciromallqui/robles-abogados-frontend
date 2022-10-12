@@ -48,6 +48,7 @@ export class SesionHostComponent implements OnInit {
     localStorage.setItem("USUARIO_SESSION", data.usuario.usuario);
     localStorage.setItem("NRO_DOCUMENTO", data.usuario.nroDocumento);
     localStorage.setItem("NOMBRE_COMPLETO", data.usuario.nombreCompleto);
+    localStorage.setItem("ID_USUARIO", data.usuario.idUsuario);
     localStorage.setItem("USUARIO_LOGUEADO", 'SI');
   }
 }

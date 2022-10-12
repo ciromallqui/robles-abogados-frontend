@@ -12,7 +12,7 @@
             </div> -->
             <div class="col-lg-5" style="text-align: end; margin-bottom: 10px;">
                 <button type="button" class="btn btn-outline-primary btn-block" style="margin-top: 10px; font-weight: bold;" (click)="onClickBuscar()">BUSCAR</button>
-                <button type="button" class="btn btn-outline-primary btn-block" style="margin-top: 10px; font-weight: bold; margin-left: 20px;" (click)="onClickAgregar()">AGREGAR EXPEDIENTE</button>
+                <button type="button" class="btn btn-outline-primary btn-block" style="margin-top: 10px; font-weight: bold; margin-left: 20px;" (click)="onClickAgregar()" *ngIf="filtro.idArea!=0">AGREGAR EXPEDIENTE</button>
             </div>
         </div>
     </div>
@@ -23,10 +23,10 @@
                     <e-columns>
                         <e-column [customAttributes]='customAttributes' [field]='column.nombre' [headerText]='column.titulo' [textAlign]='column.textAlign' width={{column.width}} *ngFor="let column of columnsToDisplay">
                         <ng-template *ngIf="column.nombre=='acciones'" #template let-data>
-                            <ejs-tooltip #tooltip content='Editar expediente' cssClass='custom-tip-blue'>
+                            <ejs-tooltip #tooltip content='Editar expediente' cssClass='custom-tip-blue' *ngIf="filtro.idArea!=0">
                                 <span class="material-icons" (click)="onClickModificar(data)" style="cursor: pointer; color:#144AA7;">edit</span>
                             </ejs-tooltip>
-                            <ejs-tooltip #tooltip content='Eliminar expediente' cssClass='custom-tip-red' *ngIf="data.idPersona!=1">
+                            <ejs-tooltip #tooltip content='Eliminar expediente' cssClass='custom-tip-red' *ngIf="data.idPersona!=1 && filtro.idArea!=0">
                                 <span class="material-icons" (click)="onClickEliminar(data)" style="cursor: pointer; color:#e00b55;">delete</span>
                             </ejs-tooltip>
                             <ejs-tooltip #tooltip content='Generar Reporte' cssClass='custom-tip-blue' *ngIf="data.idPersona!=1">

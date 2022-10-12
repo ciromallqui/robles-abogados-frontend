@@ -7,7 +7,7 @@
         <div class="col-md-4" *ngIf="seleccionado=='D'">
             <ejs-dropdownlist [dataSource]='listaEstado' placeholder="Estado actual del expediente" [fields]='datosLista' floatLabelType='Auto' [readonly]="expediente.codEstado=='2' || expediente.codEstado=='4'" [(value)]="expediente.codEstado" (select)="onSelectEstado($event)"></ejs-dropdownlist>
         </div>
-        <div class="col-md-4" style="text-align: end; margin-top: 10px;" *ngIf="seleccionado=='D' && (dataInput.codEstado!='2' && dataInput.codEstado!='4')">
+        <div class="col-md-4" style="text-align: end; margin-top: 10px;" *ngIf="seleccionado=='D' && (dataInput.codEstado!='2' && dataInput.codEstado!='4') && idArea!=0">
             <ejs-menu [items]="AccountMenuItem" cssClass="dock-menu" (select)="onSelectMenu($event)"></ejs-menu>
         </div>
     </div>
